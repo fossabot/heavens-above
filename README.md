@@ -40,57 +40,57 @@ The HeavensAbove class.
 
 Create a HeavensAbove with an optional default config.
 
-- `config`: #[`HAConfig`](#haconfig) The default config to use in each API. **Default:** `{}`
+- `config`: #[`<HAConfig>`](#haconfig) The default config to use in each API. **Default:** `{}`
 
 #### .setConfig(config)
 
 Set default configs in batch.
 
-- `config`: #[`HAConfig`](#haconfig) A pack of config.
+- `config`: #[`<HAConfig>`](#haconfig) A pack of config.
 
 #### .latitude
 
-- [`number`][number] Latitude of the default observation location (in degrees). **Default:** `0`
+- [`<number>`][number] Latitude of the default observation location (in degrees). **Default:** `0`
 
 #### .longtitude
 
-- [`number`][number] Longtitude of the default observation location (in degrees). **Default:** `0`
+- [`<number>`][number] Longtitude of the default observation location (in degrees). **Default:** `0`
 
 #### .elevation
 
-- [`number`][number] Elevation of the default observation location (in degrees). **Default:** `0`
+- [`<number>`][number] Elevation of the default observation location (in degrees). **Default:** `0`
 
 #### .language
 
-- [`string`][string] ID of the default language. Only useful in specific APIs. **Default:** `"en"`
+- [`<string>`][string] ID of the default language. Only useful in specific APIs. **Default:** `"en"`
 
 #### .getLanguageList()
 
 Get avaliable language list.
 
-- Returns: [`Promise`][promise]
+- Returns: [`<Promise>`][promise]
 
-    - Resolves: [`HALanguage[]`](#halanguage) List of Avaliable languages.
+    - Resolves: [`<HALanguage[]>`](#halanguage) List of Avaliable languages.
 
 #### .getImageStream(url)
 
 Get png image stream from url.
 
-- `url`: [`string`][string] URL of the image.
+- `url`: [`<string>`][string] URL of the image.
 
-- Returns: [`Promise`][promise]
+- Returns: [`<Promise>`][promise]
 
-    - Resolves: [`Readable`][readable] PNG image stream from url.
+    - Resolves: [`<Readable>`][readable] PNG image stream from url.
 
 #### .getSkyChartURL([config])
 
 Get sky chart image URL from config.
 
-- `config`: [`HASkyChartConfig`](#haskychartconfig) Config of the sky chart. **Default:** `{}`
+- `config`: [`<HASkyChartConfig>`](#haskychartconfig) Config of the sky chart. **Default:** `{}`
 
-- Returns: [`Promise`][promise]
+- Returns: [`<Promise>`][promise]
 
-    - Resolves: [`string`][string] Sky chart image URL.
+    - Resolves: [`<string>`][string] Sky chart image URL.
 
 ### Interfaces
 
@@ -98,41 +98,41 @@ Get sky chart image URL from config.
 
 Base config
 
-- `latitude`: [`number `][number] Latitude of the observation location (in degrees). **Default:** `0`
+- `latitude`: [`<number>`][number] Latitude of the observation location (in degrees). **Default:** `0`
 
-- `longtitude`: [`number`][number] Longitude of the observation location (in degrees). **Default:** `0`
+- `longtitude`: [`<number>`][number] Longitude of the observation location (in degrees). **Default:** `0`
 
-- `elevation`: [`number`][number] Elevation of the observation location (in meters). **Default:** `0`
+- `elevation`: [`<number>`][number] Elevation of the observation location (in meters). **Default:** `0`
 
-- `language`: [`string`][string] ID of the selected language. Only useful in specific APIs. **Default:** `"en"`
+- `language`: [`<string>`][string] ID of the selected language. Only useful in specific APIs. **Default:** `"en"`
 
 #### HASkyChartConfig
 
 Configs related to sky chart.
 
-- Every properties in [`HAConfig`](#haconfig)
+- Every properties in [`<HAConfig>`](#haconfig)
 
-- `time`: [`Date`][date] Observation time (accurate to minute). **Default:** `new Date()`
+- `time`: [`<Date>`][date] Observation time (accurate to minute). **Default:** `new Date()`
 
-- `constellationLines`: [`boolean`][boolean] Display constellation lines. **Default:** `true`
+- `constellationLines`: [`<boolean>`][boolean] Display constellation lines. **Default:** `true`
 
-- `constellationNames`: [`boolean`][boolean] Display constellation names. **Default:** `true`
+- `constellationNames`: [`<boolean>`][boolean] Display constellation names. **Default:** `true`
 
-- `constellationBoundaries`: [`boolean`][boolean] Display constellation boundaries. **Default:** `false`
+- `constellationBoundaries`: [`<boolean>`][boolean] Display constellation boundaries. **Default:** `false`
 
-- `eclipticPlane`: [`boolean`][boolean] Display ecliptic plane. **Default:** `false`
+- `eclipticPlane`: [`<boolean>`][boolean] Display ecliptic plane. **Default:** `false`
 
-- `colored`: [`boolean`][boolean] Display colored sky chart instead of black and white. **Default:** `true`
+- `colored`: [`<boolean>`][boolean] Display colored sky chart instead of black and white. **Default:** `true`
 
-- `size`: [`number`][number] The size of the sky chart (in pixels, from 500 to 1600). **Default:** `800`
+- `size`: [`<number>`][number] The size of the sky chart (in pixels, from 500 to 1600). **Default:** `800`
 
 #### HALanguage
 
 An available language.
 
-- `id`: [`string`][string] ID of the language
+- `id`: [`<string>`][string] ID of the language
 
-- `name`: [`string`][string] Name of the Language
+- `name`: [`<string>`][string] Name of the Language
 
 [boolean]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type
 [date]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
