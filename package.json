@@ -1,0 +1,84 @@
+{
+  "name": "heavens-above",
+  "version": "0.1.0",
+  "description": "An unofficial package to get data on www.heavens-above.com with TypeScript",
+  "main": "dist/lib/index.js",
+  "types": "dist/lib/index.d.ts",
+  "homepage": "https://github.com/littlepiggy03/heavens-above#readme",
+  "author": "littlepiggy03 <littlepiggy03@hotmail.com>",
+  "license": "Apache-2.0",
+  "keywords": [
+    "heavens-above",
+    "astronomy",
+    "sun",
+    "moon",
+    "sky-chart",
+    "satellite",
+    "database",
+    "typescript",
+    "types"
+  ],
+  "directories": {
+    "lib": "dist/lib",
+    "test": "dist/test"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/littlepiggy03/heavens-above.git"
+  },
+  "bugs": {
+    "url": "https://github.com/littlepiggy03/heavens-above/issues"
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "lint": "npx tslint -p . --format codeFrame",
+    "compile": "npx tsc --pretty",
+    "build": "npm run lint && npm run compile",
+    "rebuild": "npm run clean && npm run build",
+    "test": "npx mocha -t 10000 -r intelli-espower-loader dist/test/*.test.js",
+    "cov": "npx nyc npm test",
+    "precommit": "npm run rebuild && npm run cov",
+    "commitmsg": "npx commitlint -E GIT_PARAMS"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "jsdom": "^11.11.0",
+    "source-map-support": "^0.5.6"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-conventional": "^7.0.1",
+    "@types/jsdom": "^11.0.6",
+    "@types/mocha": "^5.2.3",
+    "@types/node": "^10.5.1",
+    "@types/power-assert": "^1.5.0",
+    "@types/source-map-support": "^0.4.1",
+    "husky": "^0.14.3",
+    "intelli-espower-loader": "^1.0.1",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
+    "power-assert": "^1.6.0",
+    "tslint": "^5.10.0",
+    "tslint-microsoft-contrib": "^5.0.3",
+    "typescript": "^2.9.2"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "per-file": true,
+    "statements": 60,
+    "branches": 50,
+    "functions": 60,
+    "lines": 60,
+    "exclude": [
+      "dist/test",
+      "examples"
+    ],
+    "reporter": [
+      "html",
+      "text"
+    ]
+  }
+}
