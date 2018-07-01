@@ -1,6 +1,7 @@
 # heavens-above
 
 [![Build Status](https://travis-ci.org/littlepiggy03/heavens-above.svg?branch=master)](https://travis-ci.org/littlepiggy03/heavens-above)
+[![Codecov](https://codecov.io/gh/littlepiggy03/heavens-above/branch/master/graph/badge.svg)](https://codecov.io/gh/littlepiggy03/heavens-above)
 
 An unofficial package to get data on [www.heavens-above.com](http://www.heavens-above.com) with TypeScript.
 
