@@ -43,6 +43,10 @@ export interface HAConfig {
  * HeavensAbove config with time property
  */
 export interface HATimeConfig extends HAConfig {
+
+    /**
+     * Observation time. **Default:** `new Date()`
+     */
     time: Date;
 }
 
@@ -67,8 +71,8 @@ export function toRawConfig(config: Partial<HAConfig>): Partial<HARawConfig> {
 }
 
 export function toRequestConfig<T extends HATimeConfig>(HA: HeavensAbove,
-                                                       config: Partial<T> = {},
-                                                       i18n: boolean = false): HARequestConfig {
+                                                        config: Partial<T> = {},
+                                                        i18n: boolean = false): HARequestConfig {
     // tslint:disable-next-line:no-any
     const _config: Partial<T> = {...<any>config};
     const result = {
@@ -81,7 +85,6 @@ export function toRequestConfig<T extends HATimeConfig>(HA: HeavensAbove,
     delete _config.elevation;
     delete _config.language;
     delete _config.time;
-    // tslint:disable-next-line:no-any
     Object.assign(result, purifyObject(_config));
     if (!i18n) {
         result.cul = "en";

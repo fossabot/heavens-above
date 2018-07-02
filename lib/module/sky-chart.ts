@@ -7,7 +7,7 @@ import HeavensAbove from "..";
 import {
     $attr,
     getCheckboxValue,
-    HAConfig,
+    HATimeConfig,
     postDocument,
     purifyObject,
     toRequestConfig
@@ -16,12 +16,7 @@ import {
 /**
  * Configs related to sky chart
  */
-export interface HASkyChartConfig extends HAConfig {
-
-    /**
-     * Observation time (accurate to minute). **Default:** `new Date()`
-     */
-    time: Date;
+export interface HASkyChartConfig extends HATimeConfig {
 
     /**
      * Display constellation lines. **Default:** `true`

@@ -99,7 +99,7 @@ Get sky chart image URL from config.
 
 Get sun info from config.
 
-- `config`: #[`<HASkyChartConfig>`](#haskychartconfig) Config of observing location and time. **Default:** `{}`
+- `config`: #[`<HATimeConfig>`](#hatimeconfig) Config of observing location and time. **Default:** `{}`
 
 - Returns: [`<Promise>`][promise]
 
@@ -190,9 +190,7 @@ Right ascension.
 
 Configs related to sky chart.
 
-- Every properties in [`<HAConfig>`](#haconfig)
-
-- `time`: [`<Date>`][date] Observation time (accurate to minute). **Default:** `new Date()`
+- Every properties in [`<HATimeConfig>`](#hatimeconfig)
 
 - `constellationLines`: [`<boolean>`][boolean] Display constellation lines. **Default:** `true`
 
@@ -219,6 +217,14 @@ Sun info.
 - `positionImageURL`: [`<string>`][string] URL of sun position image.
 
 - `sunImageURL`: [`<string>`][string] URL of latest sun image.
+
+### HATimeConfig
+
+HeavensAbove config with time property
+
+- Every properties in [`<HAConfig>`](#haconfig)
+
+- `time`: [`<Date>`][date] Observation time. **Default:** `new Date()`
 
 [boolean]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type
 [date]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
