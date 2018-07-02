@@ -39,6 +39,13 @@ export interface HAConfig {
     language: string;
 }
 
+/**
+ * HeavensAbove config with time property
+ */
+export interface HATimeConfig extends HAConfig {
+    time: Date;
+}
+
 export function purifyObject<T>(obj: Partial<T>): Partial<T> {
     for (const key of Object.keys(obj)) {
         // tslint:disable-next-line no-any
@@ -59,9 +66,9 @@ export function toRawConfig(config: Partial<HAConfig>): Partial<HARawConfig> {
     });
 }
 
-export function toRequestConfig<T extends HAConfig>(HA: HeavensAbove,
-                                                    config: Partial<T> = {},
-                                                    i18n: boolean = false): HARequestConfig {
+export function toRequestConfig<T extends HATimeConfig>(HA: HeavensAbove,
+                                                       config: Partial<T> = {},
+                                                       i18n: boolean = false): HARequestConfig {
     // tslint:disable-next-line:no-any
     const _config: Partial<T> = {...<any>config};
     const result = {
@@ -73,6 +80,7 @@ export function toRequestConfig<T extends HAConfig>(HA: HeavensAbove,
     delete _config.longtitude;
     delete _config.elevation;
     delete _config.language;
+    delete _config.time;
     // tslint:disable-next-line:no-any
     Object.assign(result, purifyObject(_config));
     if (!i18n) {

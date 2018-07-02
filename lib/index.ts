@@ -5,21 +5,38 @@ import { Readable } from "stream";
 import {
     getLanguageList,
     getSkyChartURL,
+    getSunInfo,
     HALanguage,
-    HASkyChartConfig
+    HASkyChartConfig,
+    HASunInfo
 } from "./module";
 
 import {
     getImageStream,
     HAConfig,
+    HADeclination,
+    HAEvent,
+    HAExPosition,
+    HAPosition,
+    HAPositionEvent,
     HARawConfig,
+    HARightAscension,
+    HATimeConfig,
     toRawConfig
 } from "./utils";
 
 export {
     HAConfig,
+    HADeclination,
+    HAEvent,
+    HAExPosition,
+    HALanguage,
+    HAPosition,
+    HAPositionEvent,
+    HARightAscension,
     HASkyChartConfig,
-    HALanguage
+    HASunInfo,
+    HATimeConfig
 };
 
 /**
@@ -118,6 +135,15 @@ export class HeavensAbove implements HAConfig {
      */
     public async getSkyChartURL(config: Partial<HASkyChartConfig> = {}): Promise<string> {
         return getSkyChartURL(this, config);
+    }
+
+    /**
+     * Get sun info from config.
+     * @param config Config of observing location and time. **Default:** `{}`
+     * @returns Sun info.
+     */
+    public async getSunInfo(config: Partial<HATimeConfig> = {}): Promise<HASunInfo> {
+        return getSunInfo(this, config);
     }
 
 }
