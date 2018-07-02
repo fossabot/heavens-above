@@ -88,7 +88,7 @@ Get png image stream from url.
 
 Get sky chart image URL from config.
 
-- `config`: [`<HASkyChartConfig>`](#haskychartconfig) Config of the sky chart. **Default:** `{}`
+- `config`: #[`<HASkyChartConfig>`](#haskychartconfig) Config of the sky chart. **Default:** `{}`
 
 - Returns: [`<Promise>`][promise]
 
@@ -99,7 +99,7 @@ Get sky chart image URL from config.
 
 Get sun info from config.
 
-- `config`: [`<HASkyChartConfig>`](#haskychartconfig) Config of observing location and time. **Default:** `{}`
+- `config`: #[`<HASkyChartConfig>`](#haskychartconfig) Config of observing location and time. **Default:** `{}`
 
 - Returns: [`<Promise>`][promise]
 
