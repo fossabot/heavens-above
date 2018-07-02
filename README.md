@@ -1,8 +1,6 @@
 # heavens-above
 
-[![Build Status](https://travis-ci.org/littlepiggy03/heavens-above.svg?branch=master)](https://travis-ci.org/littlepiggy03/heavens-above)
-[![Codecov](https://codecov.io/gh/littlepiggy03/heavens-above/branch/master/graph/badge.svg)](https://codecov.io/gh/littlepiggy03/heavens-above)
-[![Greenkeeper badge](https://badges.greenkeeper.io/littlepiggy03/heavens-above.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/littlepiggy03/heavens-above.svg?branch=master)](https://travis-ci.org/littlepiggy03/heavens-above) [![Codecov](https://codecov.io/gh/littlepiggy03/heavens-above/branch/master/graph/badge.svg)](https://codecov.io/gh/littlepiggy03/heavens-above) [![Greenkeeper badge](https://badges.greenkeeper.io/littlepiggy03/heavens-above.svg)](https://greenkeeper.io/)
 
 An unofficial package to get data on [www.heavens-above.com](http://www.heavens-above.com) with TypeScript.
 
@@ -96,6 +94,17 @@ Get sky chart image URL from config.
 
     - Resolves: [`<string>`][string] Sky chart image URL.
 
+
+#### .getSunInfo([config])
+
+Get sun info from config.
+
+- `config`: [`<HASkyChartConfig>`](#haskychartconfig) Config of observing location and time. **Default:** `{}`
+
+- Returns: [`<Promise>`][promise]
+
+    - Resolves: [`<HASunInfo>`](#hasuninfo) Sun info.
+
 ### Interfaces
 
 #### HAConfig
@@ -109,6 +118,73 @@ Base config
 - `elevation`: [`<number>`][number] Elevation of the observation location (in meters). **Default:** `0`
 
 - `language`: [`<string>`][string] ID of the selected language. Only useful in specific APIs. **Default:** `"en"`
+
+#### HADeclination
+
+Declination.
+
+- `degree`: [`<number>`][number] Degree part of the declination.
+
+- `minute`: [`<number>`][number] Minute part of the declination.
+
+- `second`: [`<number>`][number] Second part of the declination.
+
+#### HAEvent
+
+Event with name and time.
+
+- `name`: [`<string>`][string] Name of the event.
+
+- `time`: [`<Date>`][date] Time of the event.
+
+#### HAExPosition
+
+Position with more data.
+
+- Every properties in [`<HAEvent>`](#haevent)
+
+- `rightAscension`: [`<HARightAscension>`](#harightascension) Right ascension of the position.
+
+- `declination`: [`<HADeclination>`](#hadeclination) Declination of the position.
+
+- `range`: [`<number>`][number] Range (distance) of the position.
+
+- `constellation`: [`<string>`][string] The constellation whick the position belongs to.
+
+#### HALanguage
+
+An available language.
+
+- `id`: [`<string>`][string] ID of the language
+
+- `name`: [`<string>`][string] Name of the Language
+
+
+#### HAPosition
+
+Position with altitude and azimuth.
+
+- `altitude`: [`<number>`][number] Altitude of the position.
+
+- `azimuth`: [`<number>`][number] Azimuth of the position.
+
+#### HAPositionEvent
+
+Event with position info.
+
+- Every properties in [`<HAEvent>`](#haevent)
+
+- Every properties in [`<HAPosition>`](#haposition)
+
+#### HARightAscension
+
+Right ascension.
+
+- `hour`: [`<number>`][number] Hour part of the right ascension.
+
+- `minute`: [`<number>`][number] Minute part of the right ascension.
+
+- `second`: [`<number>`][number] Second part of the right ascension.
 
 #### HASkyChartConfig
 
@@ -130,13 +206,19 @@ Configs related to sky chart.
 
 - `size`: [`<number>`][number] The size of the sky chart (in pixels, from 500 to 1600). **Default:** `800`
 
-#### HALanguage
+#### HASunInfo
 
-An available language.
+Sun info.
 
-- `id`: [`<string>`][string] ID of the language
+- `position`: [`<HAExPosition>`](#haexposition) Position of sun.
 
-- `name`: [`<string>`][string] Name of the Language
+- `dailyEvent`: [`<HAPositionEvent[]>`](#hapositionevent) Daily events of sun.
+
+- `yearlyEvent`: [`<HAEvent[]>`](#haevent) Yearly events of sun.
+
+- `positionImageURL`: [`<string>`][string] URL of sun position image.
+
+- `sunImageURL`: [`<string>`][string] URL of latest sun image.
 
 [boolean]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type
 [date]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
