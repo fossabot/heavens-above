@@ -1,5 +1,7 @@
 import "source-map-support/register";
 
+import * as moment from "moment";
+
 import HeavensAbove from "..";
 
 import {
@@ -53,8 +55,8 @@ export interface HASkyChartConfig extends HAConfig {
 }
 
 export async function getSkyChartURL(HA: HeavensAbove, config: Partial<HASkyChartConfig>): Promise<string> {
+    const time = moment(config.time || new Date()).utc();
     const _data = {
-        time: new Date(),
         constellationLines: true,
         constellationNames: true,
         constellationBoundaries: false,
@@ -64,11 +66,11 @@ export async function getSkyChartURL(HA: HeavensAbove, config: Partial<HASkyChar
         ...config
     };
     const data = purifyObject({
-        ctl00$cph1$txtYear: _data.time.getUTCFullYear(),
-        ctl00$cph1$txtMonth: _data.time.getUTCMonth() + 1,
-        ctl00$cph1$txtDay: _data.time.getUTCDate(),
-        ctl00$cph1$txtHour: _data.time.getUTCHours(),
-        ctl00$cph1$txtMinute: _data.time.getUTCMinutes(),
+        ctl00$cph1$txtYear: time.year(),
+        ctl00$cph1$txtMonth: time.month() + 1,
+        ctl00$cph1$txtDay: time.date(),
+        ctl00$cph1$txtHour: time.hour(),
+        ctl00$cph1$txtMinute: time.minute(),
         ctl00$cph1$chkShowLines: getCheckboxValue(_data.constellationLines),
         ctl00$cph1$chkShowNames: getCheckboxValue(_data.constellationNames),
         ctl00$cph1$chkBoundaries: getCheckboxValue(_data.constellationBoundaries),
