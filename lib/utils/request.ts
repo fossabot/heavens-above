@@ -8,16 +8,20 @@ import { JSDOM } from "jsdom";
 
 import HeavensAbove from "..";
 
-import { HARequestConfig } from ".";
+import {
+    $attr,
+    HARequestConfig
+} from ".";
 
-const viewstate: string = "";
+const viewstate = new Map<string, string>();
 
-function parseDocument(text: string): Document {
-    return new JSDOM(text).window.document;
+function parseDocument(text: string, url: string): Document {
+    const document = new JSDOM(text).window.document;
+    viewstate.set(url, $attr("value", document, "#__VIEWSTATE"));
+    return document;
 }
 
 export async function getDocument(config: HARequestConfig, url: string): Promise<Document> {
-    // tslint:disable-next-line no-any
     const response = await axios.get<string>(url, {
         baseURL: config.HOST,
         responseType: "text",
@@ -29,13 +33,15 @@ export async function getDocument(config: HARequestConfig, url: string): Promise
             Cookie: "userInfo=cul=" + config.cul
         }
     });
-    return parseDocument(response.data);
+    return parseDocument(response.data, url);
 }
 
 export async function postDocument(config: HARequestConfig, url: string, data: object): Promise<Document> {
-    // tslint:disable-next-line no-any
+    if (viewstate.has(url) === false) {
+        await getDocument(config, url);
+    }
     const _data = stringify({
-        __VIEWSTATE: viewstate,
+        __VIEWSTATE: viewstate.get(url),
         ...data
     });
     const response = await axios.post<string>(url, _data, {
@@ -50,7 +56,7 @@ export async function postDocument(config: HARequestConfig, url: string, data: o
             "Content-Type": "application/x-www-form-urlencoded"
         }
     });
-    return parseDocument(response.data);
+    return parseDocument(response.data, url);
 }
 
 export async function getImageStream(HA: HeavensAbove, url: string): Promise<Readable> {
