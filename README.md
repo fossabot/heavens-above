@@ -72,7 +72,7 @@ Get avaliable language list.
 
 - Returns: [`<Promise>`][promise]
 
-    - Resolves: [`<HALanguage[]>`](#halanguage) List of Avaliable languages.
+    - Resolves: [`<HALanguage[]>`](#halanguage) List of avaliable languages.
 
 #### .getImageStream(url)
 
@@ -149,15 +149,15 @@ Position with more data.
 
 - `range`: [`<number>`][number] Range (distance) of the position.
 
-- `constellation`: [`<string>`][string] The constellation whick the position belongs to.
+- `constellation`: [`<string>`][string] The constellation which the position belongs to.
 
 #### HALanguage
 
 An available language.
 
-- `id`: [`<string>`][string] ID of the language
+- `id`: [`<string>`][string] ID of the language.
 
-- `name`: [`<string>`][string] Name of the Language
+- `name`: [`<string>`][string] Name of the Language.
 
 
 #### HAPosition
@@ -218,9 +218,9 @@ Sun info.
 
 - `sunImageURL`: [`<string>`][string] URL of latest sun image.
 
-### HATimeConfig
+#### HATimeConfig
 
-HeavensAbove config with time property
+HeavensAbove config with time property.
 
 - Every properties in [`<HAConfig>`](#haconfig)
 
