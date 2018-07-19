@@ -23,7 +23,7 @@
     "test": "dist/test"
   },
   "files": [
-    "dist"
+    "dist/lib"
   ],
   "repository": {
     "type": "git",
