@@ -147,7 +147,7 @@ Position with more data.
 
 - `declination`: [`<HADeclination>`](#hadeclination) Declination of the position.
 
-- `range`: [`<number>`][number] Range (distance) of the position.
+- `range`: [`<number>`][number] Range (distance) of the position (in AU if not specified).
 
 - `constellation`: [`<string>`][string] The constellation which the position belongs to.
 
@@ -164,9 +164,9 @@ An available language.
 
 Position with altitude and azimuth.
 
-- `altitude`: [`<number>`][number] Altitude of the position.
+- `altitude`: [`<number>`][number] Altitude of the position (in degrees).
 
-- `azimuth`: [`<number>`][number] Azimuth of the position.
+- `azimuth`: [`<number>`][number] Azimuth of the position (in degrees).
 
 #### HAPositionEvent
 
