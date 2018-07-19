@@ -40,7 +40,6 @@
     "rebuild": "npm run clean && npm run build",
     "test": "npx mocha -t 10000 -r intelli-espower-loader dist/test/*.test.js",
     "cov": "npx nyc npm test",
-    "precommit": "npm run rebuild && npm run cov",
     "commitmsg": "npx commitlint -E GIT_PARAMS"
   },
   "dependencies": {
