@@ -4,9 +4,12 @@ import { Readable } from "stream";
 
 import {
     getLanguageList,
+    getMoonInfo,
     getSkyChartURL,
     getSunInfo,
     HALanguage,
+    HAMoonAppearance,
+    HAMoonInfo,
     HASkyChartConfig,
     HASunInfo
 } from "./module";
@@ -15,6 +18,7 @@ import {
     getImageStream,
     HAConfig,
     HADeclination,
+    HADistanceEvent,
     HAEvent,
     HAExPosition,
     HAPosition,
@@ -28,9 +32,12 @@ import {
 export {
     HAConfig,
     HADeclination,
+    HADistanceEvent,
     HAEvent,
     HAExPosition,
     HALanguage,
+    HAMoonAppearance,
+    HAMoonInfo,
     HAPosition,
     HAPositionEvent,
     HARightAscension,
@@ -144,6 +151,15 @@ export class HeavensAbove implements HAConfig {
      */
     public async getSunInfo(config: Partial<HATimeConfig> = {}): Promise<HASunInfo> {
         return getSunInfo(this, config);
+    }
+
+    /**
+     * Get moon info from config.
+     * @param config Config of observing location and time. **Default:** `{}`
+     * @returns Moon info.
+     */
+    public async getMoonInfo(config: Partial<HATimeConfig> = {}): Promise<HAMoonInfo> {
+        return getMoonInfo(this, config);
     }
 
 }

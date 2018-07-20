@@ -10,7 +10,7 @@ import {
 } from ".";
 
 export function $number(text: string): number {
-    return Number.parseFloat(text);
+    return Number.parseFloat(text.replace(/,/g, ""));
 }
 
 export function $ra(text: string): HARightAscension {

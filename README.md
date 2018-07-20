@@ -104,7 +104,25 @@ Get sun info from config.
 
     - Resolves: [`<HASunInfo>`](#hasuninfo) Sun info.
 
+#### .getMoonInfo([config])
+
+Get moon info from config.
+
+- `config`: #[`<HATimeConfig>`](#hatimeconfig) Config of observing location and time. **Default:** `{}`
+
+- Returns: [`<Promise>`][promise]
+
+    - Resolves: [`<HAMoonInfo>`](#hamooninfo) Moon info.
+
 ### Interfaces
+
+#### HADistanceEvent
+
+Event with distance info.
+
+- Every properties in [`<HAEvent>`](#haevent)
+
+- `distance`: [`<number>`][number] Distance of the event (in km).
 
 #### HAConfig
 
@@ -158,6 +176,35 @@ An available language.
 
 - `name`: [`<string>`][string] Name of the Language.
 
+#### HAMoonAppearence
+
+Moon appearance.
+
+- `diameter`: [`<number>`][number] Diameter of moon (in minutes).
+
+- `illumination`: [`<number>`][number] Illumination of disk of moon (in %).
+
+- `longitudeLibration`: [`<number>`][number] Libration in longitude of moon (in degrees).
+
+- `latitudeLibration`: [`<number>`][number] Libration in latitude of moon (in degrees).
+
+#### HAMoonInfo
+
+Moon info.
+
+- `position`: [`<HAExPosition>`](#haexposition) Position of sun. `range` is in km.
+
+- `appearence`: [`<HAMoonAppearance`](#hamoonappearence) Appearence of moon.
+
+- `event`: [`<HAPositionEvent[]>`](#hapositionevent) Events of moon.
+
+- `monthlyPhase`: [`<HAEvent[]>`](#haevent) Monthly phases of moon.
+
+- `perigeeApogee`: [`<HADistanceEvent[]>`](#hadisranceevent) Perigee and apogee of moon.
+
+- `positionImageURL`: [`<string>`][string] URL of moon position image.
+
+- `appearenceImageURL`: [`<string>`][string] URL of moon appearence image. (celestial north is upwards)
 
 #### HAPosition
 

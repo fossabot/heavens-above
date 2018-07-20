@@ -1,3 +1,16 @@
+// tslint:disable no-use-before-declare
+
+/**
+ * Event with distance info.
+ */
+export interface HADistanceEvent extends HAEvent {
+
+    /**
+     * Distance of event (in km).
+     */
+    distance: number;
+}
+
 /**
  * Event with name and time.
  */
