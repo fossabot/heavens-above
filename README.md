@@ -194,7 +194,7 @@ Moon info.
 
 - `position`: [`<HAExPosition>`](#haexposition) Position of sun. `range` is in km.
 
-- `appearence`: [`<HAMoonAppearance`](#hamoonappearence) Appearence of moon.
+- `appearence`: [`<HAMoonAppearance>`](#hamoonappearence) Appearence of moon.
 
 - `event`: [`<HAPositionEvent[]>`](#hapositionevent) Events of moon.
 

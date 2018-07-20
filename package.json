@@ -1,6 +1,6 @@
 {
   "name": "heavens-above",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "An unofficial package to get data on www.heavens-above.com with TypeScript",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index.d.ts",
