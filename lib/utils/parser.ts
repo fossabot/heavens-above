@@ -14,7 +14,7 @@ export function $number(text: string): number {
 }
 
 export function $ra(text: string): HARightAscension {
-    const match = <RegExpMatchArray>text.match(/\d+/g);
+    const match = <RegExpMatchArray>text.match(/(?:-)?\d+/g);
     assert(match !== null);
     assert(match[0] !== undefined);
     assert(match[1] !== undefined);
@@ -27,7 +27,7 @@ export function $ra(text: string): HARightAscension {
 }
 
 export function $declination(text: string): HADeclination {
-    const match = <RegExpMatchArray>text.match(/\d+/g);
+    const match = <RegExpMatchArray>text.match(/(?:-)?\d+/g);
     assert(match !== null);
     assert(match[0] !== undefined);
     assert(match[1] !== undefined);
