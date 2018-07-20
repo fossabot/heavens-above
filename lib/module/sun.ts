@@ -11,12 +11,12 @@ import {
     $number,
     $ra,
     $text,
+    getTimeData,
     HAEvent,
     HAExPosition,
     HAPositionEvent,
     HATimeConfig,
     postDocument,
-    purifyObject,
     toRequestConfig
 } from "../utils";
 
@@ -58,7 +58,7 @@ const YEARLY_EVENT_SELECTOR = "#aspnetForm > table > tbody > tr:nth-child(3) > t
 // tslint:enable max-line-length
 
 function parseTime(base: moment.Moment, text: string): Date {
-    const time = moment(text + " Z", "HH:mm:ss Z").utc();
+    const time = moment(text + " Z", "HH:mm Z").utc();
     time.set({
         year: base.year(),
         month: base.month(),
@@ -75,12 +75,7 @@ function parseDate(base: moment.Moment, text: string): Date {
 
 export async function getSunInfo(HA: HeavensAbove, config: Partial<HATimeConfig>): Promise<HASunInfo> {
     const time = moment(config.time || new Date()).utc();
-    const data = purifyObject({
-        ctl00$cph1$TimeSelectionControl1$comboYear: time.year(),
-        ctl00$cph1$TimeSelectionControl1$comboMonth: time.month() + 1,
-        ctl00$cph1$TimeSelectionControl1$comboDay: time.date(),
-        ctl00$cph1$TimeSelectionControl1$txtTime: time.format("HH:mm:ss")
-    });
+    const data = getTimeData(time);
     const document = await postDocument(toRequestConfig(HA, config), "/Sun.aspx", data);
     return {
         position: {
