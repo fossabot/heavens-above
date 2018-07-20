@@ -94,7 +94,6 @@ Get sky chart image URL from config.
 
     - Resolves: [`<string>`][string] Sky chart image URL.
 
-
 #### .getSunInfo([config])
 
 Get sun info from config.
@@ -109,7 +108,7 @@ Get sun info from config.
 
 #### HAConfig
 
-Base config
+Base config.
 
 - `latitude`: [`<number>`][number] Latitude of the observation location (in degrees). **Default:** `0`
 
