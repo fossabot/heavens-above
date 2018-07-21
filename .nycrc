@@ -1,0 +1,17 @@
+{
+  "check-coverage": true,
+  "per-file": true,
+  "statements": 60,
+  "branches": 50,
+  "functions": 60,
+  "lines": 60,
+  "exclude": [
+    "dist/test",
+    "examples"
+  ],
+  "reporter": [
+    "html",
+    "text",
+    "lcov"
+  ]
+}

@@ -64,22 +64,5 @@
     "tslint": "^5.10.0",
     "tslint-microsoft-contrib": "^5.0.3",
     "typescript": "^2.9.2"
-  },
-  "nyc": {
-    "check-coverage": true,
-    "per-file": true,
-    "statements": 60,
-    "branches": 50,
-    "functions": 60,
-    "lines": 60,
-    "exclude": [
-      "dist/test",
-      "examples"
-    ],
-    "reporter": [
-      "html",
-      "text",
-      "lcov"
-    ]
   }
 }
