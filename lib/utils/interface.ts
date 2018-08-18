@@ -1,81 +1,5 @@
-// tslint:disable no-use-before-declare
-
 /**
- * Event with distance info.
- */
-export interface HADistanceEvent extends HAEvent {
-
-    /**
-     * Distance of event (in km).
-     */
-    distance: number;
-}
-
-/**
- * Event with name and time.
- */
-export interface HAEvent {
-
-    /**
-     * Name of the event.
-     */
-    name: string;
-
-    /**
-     * Time of the event.
-     */
-    time: Date;
-}
-
-/**
- * Position with altitude and azimuth.
- */
-export interface HAPosition {
-
-    /**
-     * Altitude of the position.
-     */
-    altitude: number;
-
-    /**
-     * Azimuth of the position.
-     */
-    azimuth: number;
-}
-
-/**
- * Position with more data.
- */
-export interface HAExPosition extends HAPosition {
-
-    /**
-     * Right ascension of the position.
-     */
-    rightAscension: HARightAscension;
-
-    /**
-     * Declination of the position.
-     */
-    declination: HADeclination;
-
-    /**
-     * Range (distance) of the position.
-     */
-    range: number;
-
-    /**
-     * The constellation whick the position belongs to.
-     */
-    constellation: string;
-}
-
-/**
- * Event with position info.
- */
-export interface HAPositionEvent extends HAEvent, HAPosition {}
-
-/**
- * Right ascension.
+ * Describes right ascension.
  */
 export interface HARightAscension {
 
@@ -96,7 +20,7 @@ export interface HARightAscension {
 }
 
 /**
- * Declination.
+ * Describes declination.
  */
 export interface HADeclination {
 
@@ -115,3 +39,77 @@ export interface HADeclination {
      */
     second: number;
 }
+
+/**
+ * Basic event including name and time.
+ */
+export interface HAEvent {
+
+    /**
+     * Name of the event.
+     */
+    name: string;
+
+    /**
+     * Time of the event.
+     */
+    time: Date;
+}
+
+/**
+ * Event including distance.
+ */
+export interface HADistanceEvent extends HAEvent {
+
+    /**
+     * Distance of the event (km).
+     */
+    distance: number;
+}
+
+/**
+ * Basic position with altitude and azimuth.
+ */
+export interface HAPosition {
+
+    /**
+     * Altitude of the position (degree).
+     */
+    altitude: number;
+
+    /**
+     * Azimuth of the position (degree).
+     */
+    azimuth: number;
+}
+
+/**
+ * Position including more data.
+ */
+export interface HAExPosition extends HAPosition {
+
+    /**
+     * Right ascension of the position.
+     */
+    rightAscension: HARightAscension;
+
+    /**
+     * Declination of the position.
+     */
+    declination: HADeclination;
+
+    /**
+     * Range (distance) of the position (in AU if not specified).
+     */
+    range: number;
+
+    /**
+     * The constellation whick the position belongs to.
+     */
+    constellation: string;
+}
+
+/**
+ * Event including position.
+ */
+export interface HAPositionEvent extends HAEvent, HAPosition {}

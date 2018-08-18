@@ -22,27 +22,27 @@ import {
 } from "../utils";
 
 /**
- * Moon appearance.
+ * Describes moon appearance.
  */
 export interface HAMoonAppearance {
 
     /**
-     * Diameter of moon (in minutes).
+     * Diameter of the moon (minute).
      */
     diameter: number;
 
     /**
-     * Illumination of disk of moon (in %).
+     * Illumination of disk of the moon (%).
      */
     illumination: number;
 
     /**
-     * Libration in longitude of moon (in degrees).
+     * Libration in longitude of the moon (degree).
      */
     longitudeLibration: number;
 
     /**
-     * Libration in latitude of moon (in degrees).
+     * Libration in latitude of the moon (degree).
      */
     latitudeLibration: number;
 }
@@ -53,37 +53,37 @@ export interface HAMoonAppearance {
 export interface HAMoonInfo {
 
     /**
-     * Position of moon. `range` is in km.
+     * Position of the moon. `range` is in km.
      */
     position: HAExPosition;
 
     /**
-     * Appearence of moon.
+     * Appearence of the moon.
      */
     appearence: HAMoonAppearance;
 
     /**
-     * Events of moon.
+     * Events of the moon.
      */
     event: HAPositionEvent[];
 
     /**
-     * Monthly phases of moon.
+     * Monthly phases of the moon.
      */
     monthlyPhase: HAEvent[];
 
     /**
-     * Perigee and apogee of moon.
+     * Perigee and apogee of the moon.
      */
     perigeeApogee: HADistanceEvent[];
 
     /**
-     * URL of moon position image.
+     * URL of the moon position image.
      */
     positionImageURL: string;
 
     /**
-     * URL of moon appearence image. (celestial north is upwards)
+     * URL of the moon appearence image. (celestial north is upwards)
      */
     appearenceImageURL: string;
 

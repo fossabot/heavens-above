@@ -14,7 +14,7 @@ import {
 } from "../utils";
 
 /**
- * Configs related to sky chart
+ * Configs including sky chart params.
  */
 export interface HASkyChartConfig extends HATimeConfig {
 
@@ -44,7 +44,7 @@ export interface HASkyChartConfig extends HATimeConfig {
     colored: boolean;
 
     /**
-     * The size of the sky chart (in pixels, from 500 to 1600). **Default:** `800`
+     * The size of the sky chart (px, from 500 to 1600). **Default:** `800`
      */
     size: number;
 }

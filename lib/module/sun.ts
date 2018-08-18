@@ -21,32 +21,32 @@ import {
 } from "../utils";
 
 /**
- * Sun info.
+ * Describes sun.
  */
 export interface HASunInfo {
 
     /**
-     * Position of sun.
+     * Position of the sun.
      */
     position: HAExPosition;
 
     /**
-     * Daily events of sun.
+     * Daily events of the sun.
      */
     dailyEvent: HAPositionEvent[];
 
     /**
-     * Yearly events of sun.
+     * Yearly events of the sun.
      */
     yearlyEvent: HAEvent[];
 
     /**
-     * URL of sun position image.
+     * URL of the sun position image.
      */
     positionImageURL: string;
 
     /**
-     * URL of Latest sun image.
+     * URL of the Latest sun image.
      */
     sunImageURL: string;
 }

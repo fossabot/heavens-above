@@ -55,23 +55,23 @@ export class HeavensAbove implements HAConfig {
     };
 
     /**
-     * Create a HeavensAbove with an optional default config.
-     * @param config The default config to use in each API. **Default:** `{}`
+     * Create a HeavensAbove instance with an optional default config.
+     * @param config Default config for each API. **Default:** `{}`
      */
     public constructor(config: Partial<HAConfig> = {}) {
         this.setConfig(config);
     }
 
     /**
-     * Set default configs in batch.
-     * @param config A pack of config.
+     * Set default config.
+     * @param config New default config.
      */
     public setConfig(config: Partial<HAConfig>): void {
         Object.assign(this._config, toRawConfig(config));
     }
 
     /**
-     * Latitude of the default observation location (in degrees). **Default:** `0`
+     * Latitude of the default observation location (degree). **Default:** `0`
      */
     public get latitude(): number {
         return this._config.lat;
@@ -81,7 +81,7 @@ export class HeavensAbove implements HAConfig {
     }
 
     /**
-     * Longtitude of the default observation location (in degrees). **Default:** `0`
+     * Longtitude of the default observation location (degree). **Default:** `0`
      */
     public get longtitude(): number {
         return this._config.lng;
@@ -91,7 +91,7 @@ export class HeavensAbove implements HAConfig {
     }
 
     /**
-     * Elevation of the default observation location (in degrees). **Default:** `0`
+     * Elevation of the default observation location (meter). **Default:** `0`
      */
     public get elevation(): number {
         return this._config.alt;
@@ -101,7 +101,7 @@ export class HeavensAbove implements HAConfig {
     }
 
     /**
-     * Get png image stream from url.
+     * Get PNG image stream from url.
      * @param url URL of the image.
      * @returns PNG image stream from url.
      */
@@ -110,8 +110,8 @@ export class HeavensAbove implements HAConfig {
     }
 
     /**
-     * Get sky chart image URL from config.
-     * @param config Config of the sky chart. **Default:** `{}`
+     * Get sky chart URL by config.
+     * @param config Config to get the sky chart. **Default:** `{}`
      * @returns Sky chart image URL.
      */
     public async getSkyChartURL(config: Partial<HASkyChartConfig> = {}): Promise<string> {
@@ -119,18 +119,18 @@ export class HeavensAbove implements HAConfig {
     }
 
     /**
-     * Get sun info from config.
+     * Get sun information by config.
      * @param config Config of observing location and time. **Default:** `{}`
-     * @returns Sun info.
+     * @returns Sun information.
      */
     public async getSunInfo(config: Partial<HATimeConfig> = {}): Promise<HASunInfo> {
         return getSunInfo(this, config);
     }
 
     /**
-     * Get moon info from config.
+     * Get moon information by config.
      * @param config Config of observing location and time. **Default:** `{}`
-     * @returns Moon info.
+     * @returns Moon information.
      */
     public async getMoonInfo(config: Partial<HATimeConfig> = {}): Promise<HAMoonInfo> {
         return getMoonInfo(this, config);

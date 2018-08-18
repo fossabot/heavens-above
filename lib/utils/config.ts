@@ -9,28 +9,28 @@ export interface HARawConfig {
 }
 
 /**
- * Base configs
+ * Base config including observation location params.
  */
 export interface HAConfig {
 
     /**
-     * Latitude of the observation location (in degrees). **Default:** `0`
+     * Latitude of the observation location (degree). **Default:** `0`
      */
     latitude: number;
 
     /**
-     * Longitude of the observation location (in degrees). **Default:** `0`
+     * Longitude of the observation location (degree). **Default:** `0`
      */
     longtitude: number;
 
     /**
-     * Elevation of the observation location (in meters). **Default:** `0`
+     * Elevation of the observation location (meter). **Default:** `0`
      */
     elevation: number;
 }
 
 /**
- * HeavensAbove config with time property
+ * Config including observation time.
  */
 export interface HATimeConfig extends HAConfig {
 
