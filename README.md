@@ -218,7 +218,7 @@ Event including position.
 
 Get sky chart URL by config.
 
-- `config`: #[`<HASkyChartConfig>`<sub>(partial)</sub>](#sky-chart-config) Config to get the sky chart. **Default:** `{}`
+- `config`: [`<HASkyChartConfig>`<sub>(partial)</sub>](#sky-chart-config) Config to get the sky chart. **Default:** `{}`
 
 - Returns: [`<Promise>`][promise]
 
@@ -248,7 +248,7 @@ Configs including sky chart params.
 
 Get sun information by config.
 
-- `config`: #[`<HATimeConfig>`](#time-config) Config of observing location and time. **Default:** `{}`
+- `config`: [`<HATimeConfig><sub>(partial)</sub>`](#time-config) Config of observing location and time. **Default:** `{}`
 
 - Returns: [`<Promise>`][promise]
 
@@ -274,7 +274,7 @@ Describes sun.
 
 Get moon information by config.
 
-- `config`: #[`<HATimeConfig>`](#time-config) Config of observing location and time. **Default:** `{}`
+- `config`: [`<HATimeConfig><sub>(partial)</sub>`](#time-config) Config of observing location and time. **Default:** `{}`
 
 - Returns: [`<Promise>`][promise]
 
