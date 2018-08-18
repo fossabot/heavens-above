@@ -8,10 +8,6 @@ export interface HARawConfig {
     alt: number;
 }
 
-export interface HARequestConfig extends HARawConfig {
-    HOST: string;
-}
-
 /**
  * Base configs
  */
@@ -63,19 +59,17 @@ export function toRawConfig(config: Partial<HAConfig>): Partial<HARawConfig> {
     });
 }
 
-export function toRequestConfig<T extends HATimeConfig>(HA: HeavensAbove,
-                                                        config: Partial<T> = {}): HARequestConfig {
+export function toRequestConfig<T extends HAConfig>(HA: HeavensAbove,
+                                                        config: Partial<T> = {}): HARawConfig {
     // tslint:disable-next-line:no-any
     const _config: Partial<T> = {...<any>config};
     const result = {
-        HOST: HA.HOST,
         ...HA._config,
         ...toRawConfig(_config)
     };
     delete _config.latitude;
     delete _config.longtitude;
     delete _config.elevation;
-    delete _config.time;
     Object.assign(result, purifyObject(_config));
     return result;
 }

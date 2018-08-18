@@ -48,8 +48,6 @@ export {
  */
 export class HeavensAbove implements HAConfig {
 
-    public readonly HOST: string = "https://www.heavens-above.com/";
-
     public readonly _config: HARawConfig = {
         lat: 0,
         lng: 0,

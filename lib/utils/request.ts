@@ -10,7 +10,7 @@ import HeavensAbove from "..";
 
 import {
     $attr,
-    HARequestConfig
+    HARawConfig
 } from ".";
 
 const viewstate = new Map<string, string>();
@@ -21,9 +21,9 @@ function parseDocument(text: string, url: string): Document {
     return document;
 }
 
-export async function getDocument(config: HARequestConfig, url: string): Promise<Document> {
+export async function getDocument(config: HARawConfig, url: string): Promise<Document> {
     const response = await axios.get<string>(url, {
-        baseURL: config.HOST,
+        baseURL: "https://www.heavens-above.com/",
         responseType: "text",
         params: {
             tz: "UCT",
@@ -36,7 +36,7 @@ export async function getDocument(config: HARequestConfig, url: string): Promise
     return parseDocument(response.data, url);
 }
 
-export async function postDocument(config: HARequestConfig, url: string, data: object): Promise<Document> {
+export async function postDocument(config: HARawConfig, url: string, data: object): Promise<Document> {
     if (viewstate.has(url) === false) {
         await getDocument(config, url);
     }
@@ -45,7 +45,7 @@ export async function postDocument(config: HARequestConfig, url: string, data: o
         ...data
     });
     const response = await axios.post<string>(url, _data, {
-        baseURL: config.HOST,
+        baseURL: "https://www.heavens-above.com/",
         responseType: "text",
         params: {
             tz: "UCT",
@@ -61,7 +61,7 @@ export async function postDocument(config: HARequestConfig, url: string, data: o
 
 export async function getImageStream(HA: HeavensAbove, url: string): Promise<Readable> {
     const response = await axios.get<Readable>(url, {
-        baseURL: HA.HOST,
+        baseURL: "https://www.heavens-above.com/",
         responseType: "stream"
     });
     return response.data;
