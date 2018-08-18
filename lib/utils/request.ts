@@ -30,7 +30,7 @@ export async function getDocument(config: HARequestConfig, url: string): Promise
             ...config
         },
         headers: {
-            Cookie: "userInfo=cul=" + config.cul
+            Cookie: "userInfo=cul=en"
         }
     });
     return parseDocument(response.data, url);
@@ -52,7 +52,7 @@ export async function postDocument(config: HARequestConfig, url: string, data: o
             ...config
         },
         headers: {
-            Cookie: "userInfo=cul=" + config.cul,
+            Cookie: "userInfo=cul=en",
             "Content-Type": "application/x-www-form-urlencoded"
         }
     });

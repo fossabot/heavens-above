@@ -16,16 +16,14 @@ describe("Core", function (): void {
         HA = new HeavensAbove();
         HA = new HeavensAbove({
             latitude: 116,
-            longtitude: 40,
-            language: "zh"
+            longtitude: 40
         });
     });
 
     it("Should be able to set config", function (): void {
         HA.setConfig({
             latitude: 116,
-            longtitude: 40,
-            language: "zh"
+            longtitude: 40
         });
     });
 
@@ -33,7 +31,6 @@ describe("Core", function (): void {
         HA.latitude = HA.latitude;
         HA.longtitude = HA.longtitude;
         HA.elevation = HA.elevation;
-        HA.language = HA.language;
     });
 
     it("Should be able to get image stream", async function (): Promise<void> {

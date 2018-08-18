@@ -66,18 +66,6 @@ Set default configs in batch.
 
 - [`<number>`][number] Elevation of the default observation location (in degrees). **Default:** `0`
 
-#### .language
-
-- [`<string>`][string] ID of the default language. Only useful in specific APIs. **Default:** `"en"`
-
-#### .getLanguageList()
-
-Get avaliable language list.
-
-- Returns: [`<Promise>`][promise]
-
-    - Resolves: [`<HALanguage[]>`](#halanguage) List of avaliable languages.
-
 #### .getImageStream(url)
 
 Get png image stream from url.
@@ -138,8 +126,6 @@ Base config.
 
 - `elevation`: [`<number>`][number] Elevation of the observation location (in meters). **Default:** `0`
 
-- `language`: [`<string>`][string] ID of the selected language. Only useful in specific APIs. **Default:** `"en"`
-
 #### HADeclination
 
 Declination.
@@ -171,14 +157,6 @@ Position with more data.
 - `range`: [`<number>`][number] Range (distance) of the position (in AU if not specified).
 
 - `constellation`: [`<string>`][string] The constellation which the position belongs to.
-
-#### HALanguage
-
-An available language.
-
-- `id`: [`<string>`][string] ID of the language.
-
-- `name`: [`<string>`][string] Name of the Language.
 
 #### HAMoonAppearence
 

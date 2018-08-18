@@ -73,6 +73,6 @@ export async function getSkyChartURL(HA: HeavensAbove, config: Partial<HASkyChar
         ctl00$cph1$radioColours: _data.colored ? "radioColour" : "radioBW",
         ctl00$cph1$txtSize: _data.size
     });
-    const document = await postDocument(toRequestConfig(HA, config, true), "/SkyChart.aspx", data);
+    const document = await postDocument(toRequestConfig(HA, config), "/SkyChart.aspx", data);
     return $attr("src", document, "#ctl00_cph1_imgSkyChart");
 }

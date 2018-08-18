@@ -3,11 +3,9 @@ import "source-map-support/register";
 import { Readable } from "stream";
 
 import {
-    getLanguageList,
     getMoonInfo,
     getSkyChartURL,
     getSunInfo,
-    HALanguage,
     HAMoonAppearance,
     HAMoonInfo,
     HASkyChartConfig,
@@ -35,7 +33,6 @@ export {
     HADistanceEvent,
     HAEvent,
     HAExPosition,
-    HALanguage,
     HAMoonAppearance,
     HAMoonInfo,
     HAPosition,
@@ -56,11 +53,8 @@ export class HeavensAbove implements HAConfig {
     public readonly _config: HARawConfig = {
         lat: 0,
         lng: 0,
-        alt: 0,
-        cul: "en"
+        alt: 0
     };
-
-    public readonly _languageList: HALanguage[] = [];
 
     /**
      * Create a HeavensAbove with an optional default config.
@@ -106,24 +100,6 @@ export class HeavensAbove implements HAConfig {
     }
     public set elevation(value: number) {
         this._config.alt = value;
-    }
-
-    /**
-     * ID of the default language. Only useful in specific APIs. **Default:** `"en"`
-     */
-    public get language(): string {
-        return this._config.cul;
-    }
-    public set language(value: string) {
-        this._config.cul = value;
-    }
-
-    /**
-     * Get avaliable language list.
-     * @returns List of Avaliable languages.
-     */
-    public async getLanguageList(): Promise<HALanguage[]> {
-        return getLanguageList(this);
     }
 
     /**

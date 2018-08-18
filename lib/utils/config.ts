@@ -6,7 +6,6 @@ export interface HARawConfig {
     lat: number;
     lng: number;
     alt: number;
-    cul: string;
 }
 
 export interface HARequestConfig extends HARawConfig {
@@ -32,11 +31,6 @@ export interface HAConfig {
      * Elevation of the observation location (in meters). **Default:** `0`
      */
     elevation: number;
-
-    /**
-     * ID of the selected language. Only available in specific APIs. **Default:** `"en"`
-     */
-    language: string;
 }
 
 /**
@@ -65,14 +59,12 @@ export function toRawConfig(config: Partial<HAConfig>): Partial<HARawConfig> {
     return purifyObject({
         lat: config.latitude,
         lng: config.longtitude,
-        alt: config.elevation,
-        cul: config.language
+        alt: config.elevation
     });
 }
 
 export function toRequestConfig<T extends HATimeConfig>(HA: HeavensAbove,
-                                                        config: Partial<T> = {},
-                                                        i18n: boolean = false): HARequestConfig {
+                                                        config: Partial<T> = {}): HARequestConfig {
     // tslint:disable-next-line:no-any
     const _config: Partial<T> = {...<any>config};
     const result = {
@@ -83,11 +75,7 @@ export function toRequestConfig<T extends HATimeConfig>(HA: HeavensAbove,
     delete _config.latitude;
     delete _config.longtitude;
     delete _config.elevation;
-    delete _config.language;
     delete _config.time;
     Object.assign(result, purifyObject(_config));
-    if (!i18n) {
-        result.cul = "en";
-    }
     return result;
 }
