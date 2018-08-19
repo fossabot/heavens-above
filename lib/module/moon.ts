@@ -11,20 +11,20 @@ import {
     $number,
     $ra,
     $text,
+    DistanceEvent,
+    Event,
+    ExPosition,
     getTimeData,
-    HADistanceEvent,
-    HAEvent,
-    HAExPosition,
-    HAPositionEvent,
-    HATimeConfig,
+    PositionEvent,
     postDocument,
+    TimeConfig,
     toRequestConfig
 } from "../utils";
 
 /**
  * Describes moon appearance.
  */
-export interface HAMoonAppearance {
+export interface MoonAppearance {
 
     /**
      * Diameter of the moon (minute).
@@ -50,32 +50,32 @@ export interface HAMoonAppearance {
 /**
  * Moon info.
  */
-export interface HAMoonInfo {
+export interface MoonInfo {
 
     /**
      * Position of the moon. `range` is in km.
      */
-    position: HAExPosition;
+    position: ExPosition;
 
     /**
      * Appearence of the moon.
      */
-    appearence: HAMoonAppearance;
+    appearence: MoonAppearance;
 
     /**
      * Events of the moon.
      */
-    event: HAPositionEvent[];
+    event: PositionEvent[];
 
     /**
      * Monthly phases of the moon.
      */
-    monthlyPhase: HAEvent[];
+    monthlyPhase: Event[];
 
     /**
      * Perigee and apogee of the moon.
      */
-    perigeeApogee: HADistanceEvent[];
+    perigeeApogee: DistanceEvent[];
 
     /**
      * URL of the moon position image.
@@ -109,10 +109,10 @@ function parseDate(base: moment.Moment, text: string): Date {
     return time.toDate();
 }
 
-export async function getMoonInfo(HA: HeavensAbove, config: Partial<HATimeConfig>): Promise<HAMoonInfo> {
+export async function getMoonInfo(ha: HeavensAbove, config: Partial<TimeConfig>): Promise<MoonInfo> {
     const time = moment(config.time || new Date()).utc();
     const data = getTimeData(time);
-    const document = await postDocument(toRequestConfig(HA, config), "/Moon.aspx", data);
+    const document = await postDocument(toRequestConfig(ha, config), "/Moon.aspx", data);
     return {
         position: {
             altitude: $number($text(document, "#ctl00_cph1_lblAltitude")),

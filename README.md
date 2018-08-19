@@ -17,15 +17,15 @@ const { HeavensAbove } = require("heavens-above");
 // import HeavensAbove from "heavens-above";
 const fs = require("fs");
 
-const HA = new HeavensAbove({
+const ha = new HeavensAbove({
     latitude: 40,
     longtitude: 116,
     elevation: 50
 });
 
 (async () => {
-    const skyChartURL = await HA.getSkyChartURL();
-    const skyChart = await HA.getImageStream(skyChartURL);
+    const skyChartURL = await ha.getSkyChartURL();
+    const skyChart = await ha.getImageStream(skyChartURL);
     skyChart.pipe(fs.createWriteStream("sky-chart.png"));
 })();
 ```
@@ -47,7 +47,7 @@ The HeavensAbove class.
 
 Create a HeavensAbove instance with an optional default config.
 
-- `config`: [`<HAConfig>`<sub>(partial)</sub>](#config) Default config for each API. **Default:** `{}`
+- `config`: [`<Config>`<sub>(partial)</sub>](#config) Default config for each API. **Default:** `{}`
 
 ```typescript
 new HeavensAbove();
@@ -63,10 +63,10 @@ new HeavensAbove({
 
 Set default config.
 
-- `config`: [`<HAConfig>`<sub>(partial)</sub>](#config) New default config.
+- `config`: [`<Config>`<sub>(partial)</sub>](#config) New default config.
 
 ```typescript
-HA.setConfig({
+ha.setConfig({
     latitude: 40,
     longtitude: 116,
     elevation: 50
@@ -78,7 +78,7 @@ HA.setConfig({
 - [`<number>`][number] Latitude of the default observation location (degree). **Default:** `0`
 
 ```typescript
-HA.latitude = 40;
+ha.latitude = 40;
 ```
 
 #### .longtitude
@@ -86,7 +86,7 @@ HA.latitude = 40;
 - [`<number>`][number] Longtitude of the default observation location (degree). **Default:** `0`
 
 ```typescript
-HA.longtitude = 116;
+ha.longtitude = 116;
 ```
 
 #### .elevation
@@ -94,7 +94,7 @@ HA.longtitude = 116;
 - [`<number>`][number] Elevation of the default observation location (meter). **Default:** `0`
 
 ```typescript
-HA.elevation = 50;
+ha.elevation = 50;
 ```
 
 #### .getImageStream(url)
@@ -109,11 +109,11 @@ Get PNG image stream from url.
 
 ```typescript
 const fs = require("fs");
-const image = await HA.getImageStream("/image-url-returned-by-other-api");
+const image = await ha.getImageStream("/image-url-returned-by-other-api");
 image.pipe(fs.createWriteStream("image.png"));
 ```
 
-#### <a id="ra"></a> Interface: HARightAscension
+#### <a id="ra"></a> Interface: RightAscension
 
 Describes right ascension.
 
@@ -123,7 +123,7 @@ Describes right ascension.
 
 - `second`: [`<number>`][number] Second part of the right ascension.
 
-#### <a id="declination"></a> Interface: HADeclination
+#### <a id="declination"></a> Interface: Declination
 
 Describes declination.
 
@@ -133,7 +133,7 @@ Describes declination.
 
 - `second`: [`<number>`][number] Second part of the declination.
 
-#### <a id="config"></a> Interface: HAConfig
+#### <a id="config"></a> Interface: Config
 
 Base config including observation location params.
 
@@ -151,22 +151,22 @@ Base config including observation location params.
 }
 ```
 
-#### <a id="time-config"></a> Interface: HATimeConfig
+#### <a id="time-config"></a> Interface: TimeConfig
 
 Config including observation time.
 
-- Every properties in [`<HAConfig>`](#config)
+- Every properties in [`<Config>`](#config)
 
 - `time`: [`<Date>`][date] Observation time. **Default:** `new Date()`
 
 ```typescript
 {
-    ...HAConfig,
+    ...Config,
     time: new Date()
 }
 ```
 
-#### <a id="event"></a> Interface: HAEvent
+#### <a id="event"></a> Interface: Event
 
 Basic event including name and time.
 
@@ -174,15 +174,15 @@ Basic event including name and time.
 
 - `time`: [`<Date>`][date] Time of the event.
 
-#### <a id="distance-event"></a> Interface: HADistanceEvent
+#### <a id="distance-event"></a> Interface: DistanceEvent
 
 Event including distance.
 
-- Every properties in [`<HAEvent>`](#event)
+- Every properties in [`<Event>`](#event)
 
 - `distance`: [`<number>`][number] Distance of the event (km).
 
-#### <a id="position"></a> Interface: HAPosition
+#### <a id="position"></a> Interface: Position
 
 Basic position including altitude and azimuth.
 
@@ -190,33 +190,33 @@ Basic position including altitude and azimuth.
 
 - `azimuth`: [`<number>`][number] Azimuth of the position (degree).
 
-#### <a id="ex-position"></a> Interface: HAExPosition
+#### <a id="ex-position"></a> Interface: ExPosition
 
 Position including more data.
 
-- Every properties in [`<HAEvent>`](#event)
+- Every properties in [`<Event>`](#event)
 
-- `rightAscension`: [`<HARightAscension>`](#ra) Right ascension of the position.
+- `rightAscension`: [`<RightAscension>`](#ra) Right ascension of the position.
 
-- `declination`: [`<HADeclination>`](#declination) Declination of the position.
+- `declination`: [`<Declination>`](#declination) Declination of the position.
 
 - `range`: [`<number>`][number] Range (distance) of the position (in AU if not specified).
 
 - `constellation`: [`<string>`][string] The constellation which the position belongs to.
 
-#### <a id="position-event"></a> Interface: HAPositionEvent
+#### <a id="position-event"></a> Interface: PositionEvent
 
 Event including position.
 
-- Every properties in [`<HAEvent>`](#event)
+- Every properties in [`<Event>`](#event)
 
-- Every properties in [`<HAPosition>`](#position)
+- Every properties in [`<Position>`](#position)
 
 #### <a id="fuzzy-azimuth"></a> Type: FuzzyAzimuth
 
 Fuzzy azimuth. One of `"N"`, `"NNE"`, `"NE"`, `"ENE"`, `"E"`, `"ESE"`, `"SE"`, `"SSE"`, `"S"`, `"SSW"`, `"SW"`, `"WSW"`, `"W"`, `"WNW"`, `"NW"`, `"NNW"`
 
-#### <a id="fuzzy-position"></a> Interface: HAFuzzyPosition
+#### <a id="fuzzy-position"></a> Interface: FuzzyPosition
 
 Basic position including altitude and azimuth.
 
@@ -224,13 +224,13 @@ Basic position including altitude and azimuth.
 
 - `azimuth`: [`<FuzzyAzimuth>`](#fuzzy-azimuth) Azimuth of the position (degree).
 
-#### <a id="fuzzy-event"></a> Interface: HAFuzzyEvent
+#### <a id="fuzzy-event"></a> Interface: FuzzyEvent
 
 Event including fuzzy position.
 
-- Every properties in [`<HAEvent>`](#event)
+- Every properties in [`<Event>`](#event)
 
-- Every properties in [`<HAFuzzyPosition>`](#fuzzy-position)
+- Every properties in [`<FuzzyPosition>`](#fuzzy-position)
 
 ### Sky Chart API
 
@@ -238,17 +238,17 @@ Event including fuzzy position.
 
 Get sky chart URL by config.
 
-- `config`: [`<HASkyChartConfig>`<sub>(partial)</sub>](#sky-chart-config) Config to get the sky chart. **Default:** `{}`
+- `config`: [`<SkyChartConfig>`<sub>(partial)</sub>](#sky-chart-config) Config to get the sky chart. **Default:** `{}`
 
 - Returns: [`<Promise>`][promise]
 
     - Resolves: [`<string>`][string] Sky chart image URL.
 
-#### <a id="sky-chart-config"></a> Interface: HASkyChartConfig
+#### <a id="sky-chart-config"></a> Interface: SkyChartConfig
 
 Configs including sky chart params.
 
-- Every properties in [`<HATimeConfig>`](#time-config)
+- Every properties in [`<TimeConfig>`](#time-config)
 
 - `constellationLines`: [`<boolean>`][boolean] Display constellation lines. **Default:** `true`
 
@@ -268,21 +268,21 @@ Configs including sky chart params.
 
 Get sun information by config.
 
-- `config`: [`<HATimeConfig>`<sub>(partial)</sub>](#time-config) Config of observing location and time. **Default:** `{}`
+- `config`: [`<TimeConfig>`<sub>(partial)</sub>](#time-config) Config of observing location and time. **Default:** `{}`
 
 - Returns: [`<Promise>`][promise]
 
-    - Resolves: [`<HASunInfo>`](#sun-info) Sun information.
+    - Resolves: [`<SunInfo>`](#sun-info) Sun information.
 
-#### <a id="sun-info"></a> Interface: HASunInfo
+#### <a id="sun-info"></a> Interface: SunInfo
 
 Describes sun.
 
-- `position`: [`<HAExPosition>`](#ex-position) Position of the sun.
+- `position`: [`<ExPosition>`](#ex-position) Position of the sun.
 
-- `dailyEvent`: [`<HAPositionEvent[]>`](#position-event) Daily events of the sun.
+- `dailyEvent`: [`<PositionEvent[]>`](#position-event) Daily events of the sun.
 
-- `yearlyEvent`: [`<HAEvent[]>`](#event) Yearly events of the sun.
+- `yearlyEvent`: [`<Event[]>`](#event) Yearly events of the sun.
 
 - `positionImageURL`: [`<string>`][string] URL of the sun position image.
 
@@ -294,13 +294,13 @@ Describes sun.
 
 Get moon information by config.
 
-- `config`: [`<HATimeConfig>`<sub>(partial)</sub>](#time-config) Config of observing location and time. **Default:** `{}`
+- `config`: [`<TimeConfig>`<sub>(partial)</sub>](#time-config) Config of observing location and time. **Default:** `{}`
 
 - Returns: [`<Promise>`][promise]
 
-    - Resolves: [`<HAMoonInfo>`](#moon-info) Moon information.
+    - Resolves: [`<MoonInfo>`](#moon-info) Moon information.
 
-#### <a id="moon-appearence"></a> Interface: HAMoonAppearence
+#### <a id="moon-appearence"></a> Interface: MoonAppearence
 
 Describes moon appearance.
 
@@ -312,19 +312,19 @@ Describes moon appearance.
 
 - `latitudeLibration`: [`<number>`][number] Libration in latitude of the moon (degree).
 
-#### <a id="moon-info"></a> Interface: HAMoonInfo
+#### <a id="moon-info"></a> Interface: MoonInfo
 
 Moon information.
 
-- `position`: [`<HAExPosition>`](#ex-position) Position of the moon. `range` is in km.
+- `position`: [`<ExPosition>`](#ex-position) Position of the moon. `range` is in km.
 
-- `appearence`: [`<HAMoonAppearance>`](#moon-appearence) Appearence of the moon.
+- `appearence`: [`<MoonAppearance>`](#moon-appearence) Appearence of the moon.
 
-- `event`: [`<HAPositionEvent[]>`](#position-event) Events of the moon.
+- `event`: [`<PositionEvent[]>`](#position-event) Events of the moon.
 
-- `monthlyPhase`: [`<HAEvent[]>`](#event) Monthly phases of the moon.
+- `monthlyPhase`: [`<Event[]>`](#event) Monthly phases of the moon.
 
-- `perigeeApogee`: [`<HADistanceEvent[]>`](#distance-event) Perigee and apogee of the moon.
+- `perigeeApogee`: [`<DistanceEvent[]>`](#distance-event) Perigee and apogee of the moon.
 
 - `positionImageURL`: [`<string>`][string] URL of the moon position image.
 
@@ -336,31 +336,31 @@ Moon information.
 
 Get daily passing prediction by config.
 
-- `config`: [`<HAPassingConfig>`<sub>(partial)</sub>](#passing-config) Config to get daily passing prediction. **Default:** `{}`
+- `config`: [`<PassingConfig>`<sub>(partial)</sub>](#passing-config) Config to get daily passing prediction. **Default:** `{}`
 
 - Returns: [`<Promise>`][promise]
 
-    - Resolves: [`<HAPassing[]>`](#passing) Daily passing prediction list.
+    - Resolves: [`<Passing[]>`](#passing) Daily passing prediction list.
 
-#### <a id="passing-period"></a> Type: HAPassingPeriod
+#### <a id="passing-period"></a> Type: PassingPeriod
 
 `"morning"` or `"evening"`.
 
-#### <a id="min-brightness"></a> Type: HAMinBrightness
+#### <a id="min-brightness"></a> Type: MinBrightness
 
 One of `3`, `3.5`, `4`, `4.5`, `5`.
 
-#### <a id="passing-config"></a> Interface: HAPassingConfig
+#### <a id="passing-config"></a> Interface: PassingConfig
 
 Config to get satellite passing events.
 
-- Every properties in [`<HATimeConfig>`](#time-config)
+- Every properties in [`<TimeConfig>`](#time-config)
 
-- `period`: [`<HAPassingPeriod>`](#passing-period) Passing period.
+- `period`: [`<PassingPeriod>`](#passing-period) Passing period.
 
-- `minBrightness`: [`<HAMinBrightness>`](#min-brightness) Minimum brightness.
+- `minBrightness`: [`<MinBrightness>`](#min-brightness) Minimum brightness.
 
-#### <a id="passing"> Interface: HAPassing
+#### <a id="passing"> Interface: Passing
 
 Describes a satellite passing event.
 
@@ -368,11 +368,11 @@ Describes a satellite passing event.
 
 - `brightness`: [`<number>`][number] Brightness (mag).
 
-- `start`: [`<HAFuzzyEvent>`](#fuzzy-event) Passing start event.
+- `start`: [`<FuzzyEvent>`](#fuzzy-event) Passing start event.
 
-- `hightest`: [`<HAFuzzyEvent>`](#fuzzy-event) Hightest point event.
+- `hightest`: [`<FuzzyEvent>`](#fuzzy-event) Hightest point event.
 
-- `end`: [`<HAFuzzyEvent>`](#fuzzy-event) Passing end event.
+- `end`: [`<FuzzyEvent>`](#fuzzy-event) Passing end event.
 
 - `detailURL`: [`<string>`][string] URL of the passing detail.
 

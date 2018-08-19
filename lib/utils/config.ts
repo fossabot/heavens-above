@@ -2,7 +2,7 @@ import "source-map-support/register";
 
 import HeavensAbove from "..";
 
-export interface HARawConfig {
+export interface RawConfig {
     lat: number;
     lng: number;
     alt: number;
@@ -11,7 +11,7 @@ export interface HARawConfig {
 /**
  * Base config including observation location params.
  */
-export interface HAConfig {
+export interface Config {
 
     /**
      * Latitude of the observation location (degree). **Default:** `0`
@@ -32,7 +32,7 @@ export interface HAConfig {
 /**
  * Config including observation time.
  */
-export interface HATimeConfig extends HAConfig {
+export interface TimeConfig extends Config {
 
     /**
      * Observation time. **Default:** `new Date()`
@@ -51,7 +51,7 @@ export function purifyObject<T>(obj: Partial<T>): Partial<T> {
     return obj;
 }
 
-export function toRawConfig(config: Partial<HAConfig>): Partial<HARawConfig> {
+export function toRawConfig(config: Partial<Config>): Partial<RawConfig> {
     return purifyObject({
         lat: config.latitude,
         lng: config.longtitude,
@@ -59,12 +59,11 @@ export function toRawConfig(config: Partial<HAConfig>): Partial<HARawConfig> {
     });
 }
 
-export function toRequestConfig<T extends HAConfig>(HA: HeavensAbove,
-                                                        config: Partial<T> = {}): HARawConfig {
+export function toRequestConfig<T extends Config>(ha: HeavensAbove, config: Partial<T>): RawConfig {
     // tslint:disable-next-line:no-any
     const _config: Partial<T> = {...<any>config};
     const result = {
-        ...HA._config,
+        ...ha._config,
         ...toRawConfig(_config)
     };
     delete _config.latitude;

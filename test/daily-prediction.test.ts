@@ -7,20 +7,20 @@ import HeavensAbove from "../lib";
 
 // tslint:disable no-function-expression mocha-no-side-effect-code
 
-let HA: HeavensAbove;
+let ha: HeavensAbove;
 
 describe("Daily prediction", function (): void {
 
     before(function (): void {
-        HA = new HeavensAbove();
+        ha = new HeavensAbove();
     });
 
     it("Should be able to get daily prediction without config", async function (): Promise<void> {
-        await HA.getDailyPrediction();
+        await ha.getDailyPrediction();
     });
 
     it("Should be able to get daily prediction with config", async function (): Promise<void> {
-        await HA.getDailyPrediction({
+        await ha.getDailyPrediction({
             time: new Date("2018-07-01"),
             period: "morning",
             minBrightness: 5
@@ -29,7 +29,7 @@ describe("Daily prediction", function (): void {
 
     it("Should fail to get daily prediction with far away date", async function (): Promise<void> {
         try {
-            await HA.getDailyPrediction({
+            await ha.getDailyPrediction({
                 time: new Date("1949-10-01")
             });
             assert(false);

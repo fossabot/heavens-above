@@ -11,34 +11,34 @@ import {
     $number,
     $ra,
     $text,
+    Event,
+    ExPosition,
     getTimeData,
-    HAEvent,
-    HAExPosition,
-    HAPositionEvent,
-    HATimeConfig,
+    PositionEvent,
     postDocument,
+    TimeConfig,
     toRequestConfig
 } from "../utils";
 
 /**
  * Describes sun.
  */
-export interface HASunInfo {
+export interface SunInfo {
 
     /**
      * Position of the sun.
      */
-    position: HAExPosition;
+    position: ExPosition;
 
     /**
      * Daily events of the sun.
      */
-    dailyEvent: HAPositionEvent[];
+    dailyEvent: PositionEvent[];
 
     /**
      * Yearly events of the sun.
      */
-    yearlyEvent: HAEvent[];
+    yearlyEvent: Event[];
 
     /**
      * URL of the sun position image.
@@ -71,10 +71,10 @@ function parseDate(base: moment.Moment, text: string): Date {
     return time.toDate();
 }
 
-export async function getSunInfo(HA: HeavensAbove, config: Partial<HATimeConfig>): Promise<HASunInfo> {
+export async function getSunInfo(ha: HeavensAbove, config: Partial<TimeConfig>): Promise<SunInfo> {
     const time = moment(config.time || new Date()).utc();
     const data = getTimeData(time);
-    const document = await postDocument(toRequestConfig(HA, config), "/Sun.aspx", data);
+    const document = await postDocument(toRequestConfig(ha, config), "/Sun.aspx", data);
     return {
         position: {
             altitude: $number($text(document, "#ctl00_cph1_lblAltitude")),

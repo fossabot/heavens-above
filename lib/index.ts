@@ -7,57 +7,57 @@ import {
     getMoonInfo,
     getSkyChartURL,
     getSunInfo,
-    HAMinBrightness,
-    HAMoonAppearance,
-    HAMoonInfo,
-    HAPassing,
-    HAPassingConfig,
-    HAPassingPeriod,
-    HASkyChartConfig,
-    HASunInfo
+    MinBrightness,
+    MoonAppearance,
+    MoonInfo,
+    Passing,
+    PassingConfig,
+    PassingPeriod,
+    SkyChartConfig,
+    SunInfo
 } from "./module";
 
 import {
+    Config,
+    Declination,
+    DistanceEvent,
+    Event,
+    ExPosition,
     getImageStream,
-    HAConfig,
-    HADeclination,
-    HADistanceEvent,
-    HAEvent,
-    HAExPosition,
-    HAPosition,
-    HAPositionEvent,
-    HARawConfig,
-    HARightAscension,
-    HATimeConfig,
+    Position,
+    PositionEvent,
+    RawConfig,
+    RightAscension,
+    TimeConfig,
     toRawConfig
 } from "./utils";
 
 export {
-    HAConfig,
-    HADeclination,
-    HADistanceEvent,
-    HAEvent,
-    HAExPosition,
-    HAMinBrightness,
-    HAMoonAppearance,
-    HAMoonInfo,
-    HAPosition,
-    HAPassing,
-    HAPassingConfig,
-    HAPassingPeriod,
-    HAPositionEvent,
-    HARightAscension,
-    HASkyChartConfig,
-    HASunInfo,
-    HATimeConfig
+    Config,
+    Declination,
+    DistanceEvent,
+    Event,
+    ExPosition,
+    MinBrightness,
+    MoonAppearance,
+    MoonInfo,
+    Position,
+    Passing,
+    PassingConfig,
+    PassingPeriod,
+    PositionEvent,
+    RightAscension,
+    SkyChartConfig,
+    SunInfo,
+    TimeConfig
 };
 
 /**
  * The HeavensAbove class.
  */
-export class HeavensAbove implements HAConfig {
+export class HeavensAbove implements Config {
 
-    public readonly _config: HARawConfig = {
+    public readonly _config: RawConfig = {
         lat: 0,
         lng: 0,
         alt: 0
@@ -67,7 +67,7 @@ export class HeavensAbove implements HAConfig {
      * Create a HeavensAbove instance with an optional default config.
      * @param config Default config for each API. **Default:** `{}`
      */
-    public constructor(config: Partial<HAConfig> = {}) {
+    public constructor(config: Partial<Config> = {}) {
         this.setConfig(config);
     }
 
@@ -75,7 +75,7 @@ export class HeavensAbove implements HAConfig {
      * Set default config.
      * @param config New default config.
      */
-    public setConfig(config: Partial<HAConfig>): void {
+    public setConfig(config: Partial<Config>): void {
         Object.assign(this._config, toRawConfig(config));
     }
 
@@ -123,7 +123,7 @@ export class HeavensAbove implements HAConfig {
      * @param config Config to get the sky chart. **Default:** `{}`
      * @returns Sky chart image URL.
      */
-    public async getSkyChartURL(config: Partial<HASkyChartConfig> = {}): Promise<string> {
+    public async getSkyChartURL(config: Partial<SkyChartConfig> = {}): Promise<string> {
         return getSkyChartURL(this, config);
     }
 
@@ -132,7 +132,7 @@ export class HeavensAbove implements HAConfig {
      * @param config Config of observing location and time. **Default:** `{}`
      * @returns Sun information.
      */
-    public async getSunInfo(config: Partial<HATimeConfig> = {}): Promise<HASunInfo> {
+    public async getSunInfo(config: Partial<TimeConfig> = {}): Promise<SunInfo> {
         return getSunInfo(this, config);
     }
 
@@ -141,7 +141,7 @@ export class HeavensAbove implements HAConfig {
      * @param config Config of observing location and time. **Default:** `{}`
      * @returns Moon information.
      */
-    public async getMoonInfo(config: Partial<HATimeConfig> = {}): Promise<HAMoonInfo> {
+    public async getMoonInfo(config: Partial<TimeConfig> = {}): Promise<MoonInfo> {
         return getMoonInfo(this, config);
     }
 
@@ -150,7 +150,7 @@ export class HeavensAbove implements HAConfig {
      * @param config Config to get daily passing prediction. **Default:** `{}`
      * @returns Daily passing prediction list.
      */
-    public async getDailyPrediction(config: Partial<HAPassingConfig> = {}): Promise<HAPassing[]> {
+    public async getDailyPrediction(config: Partial<PassingConfig> = {}): Promise<Passing[]> {
         return getDailyPrediction(this, config);
     }
 

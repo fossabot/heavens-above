@@ -5,16 +5,16 @@ import "source-map-support/register";
 import * as assert from "assert";
 
 import {
-    HADeclination,
-    HAFuzzyAzimuth,
-    HARightAscension
+    Declination,
+    FuzzyAzimuth,
+    RightAscension
 } from ".";
 
 export function $number(text: string): number {
     return Number.parseFloat(text.replace(/,/g, ""));
 }
 
-export function $ra(text: string): HARightAscension {
+export function $ra(text: string): RightAscension {
     const match = <RegExpMatchArray>text.match(/(?:-)?\d+/g);
     assert(match !== null);
     assert(match[0] !== undefined);
@@ -27,7 +27,7 @@ export function $ra(text: string): HARightAscension {
     };
 }
 
-export function $declination(text: string): HADeclination {
+export function $declination(text: string): Declination {
     const match = <RegExpMatchArray>text.match(/(?:-)?\d+/g);
     assert(match !== null);
     assert(match[0] !== undefined);
@@ -40,7 +40,7 @@ export function $declination(text: string): HADeclination {
     };
 }
 
-export function $fuzzyAzimuth(text: string): HAFuzzyAzimuth {
+export function $fuzzyAzimuth(text: string): FuzzyAzimuth {
     assert([
         "N",
         "NNE",
@@ -59,5 +59,5 @@ export function $fuzzyAzimuth(text: string): HAFuzzyAzimuth {
         "NW",
         "NNW"
     ].includes(text));
-    return <HAFuzzyAzimuth>text;
+    return <FuzzyAzimuth>text;
 }

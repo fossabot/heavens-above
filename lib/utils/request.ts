@@ -10,7 +10,7 @@ import HeavensAbove from "..";
 
 import {
     $attr,
-    HARawConfig
+    RawConfig
 } from ".";
 
 const viewstate = new Map<string, string>();
@@ -21,7 +21,7 @@ function parseDocument(text: string, url: string): Document {
     return document;
 }
 
-export async function getDocument(config: HARawConfig, url: string): Promise<Document> {
+export async function getDocument(config: RawConfig, url: string): Promise<Document> {
     const response = await axios.get<string>(url, {
         baseURL: "https://www.heavens-above.com/",
         responseType: "text",
@@ -36,7 +36,7 @@ export async function getDocument(config: HARawConfig, url: string): Promise<Doc
     return parseDocument(response.data, url);
 }
 
-export async function postDocument(config: HARawConfig, url: string, data: object): Promise<Document> {
+export async function postDocument(config: RawConfig, url: string, data: object): Promise<Document> {
     if (viewstate.has(url) === false) {
         await getDocument(config, url);
     }
@@ -59,7 +59,7 @@ export async function postDocument(config: HARawConfig, url: string, data: objec
     return parseDocument(response.data, url);
 }
 
-export async function getImageStream(HA: HeavensAbove, url: string): Promise<Readable> {
+export async function getImageStream(ha: HeavensAbove, url: string): Promise<Readable> {
     const response = await axios.get<Readable>(url, {
         baseURL: "https://www.heavens-above.com/",
         responseType: "stream"

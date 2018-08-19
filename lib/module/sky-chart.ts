@@ -7,16 +7,16 @@ import HeavensAbove from "..";
 import {
     $attr,
     getCheckboxValue,
-    HATimeConfig,
     postDocument,
     purifyObject,
+    TimeConfig,
     toRequestConfig
 } from "../utils";
 
 /**
  * Configs including sky chart params.
  */
-export interface HASkyChartConfig extends HATimeConfig {
+export interface SkyChartConfig extends TimeConfig {
 
     /**
      * Display constellation lines. **Default:** `true`
@@ -49,7 +49,7 @@ export interface HASkyChartConfig extends HATimeConfig {
     size: number;
 }
 
-export async function getSkyChartURL(HA: HeavensAbove, config: Partial<HASkyChartConfig>): Promise<string> {
+export async function getSkyChartURL(ha: HeavensAbove, config: Partial<SkyChartConfig>): Promise<string> {
     const time = moment(config.time || new Date()).utc();
     const _data = {
         constellationLines: true,
@@ -73,6 +73,6 @@ export async function getSkyChartURL(HA: HeavensAbove, config: Partial<HASkyChar
         ctl00$cph1$radioColours: _data.colored ? "radioColour" : "radioBW",
         ctl00$cph1$txtSize: _data.size
     });
-    const document = await postDocument(toRequestConfig(HA, config), "/SkyChart.aspx", data);
+    const document = await postDocument(toRequestConfig(ha, config), "/SkyChart.aspx", data);
     return $attr("src", document, "#ctl00_cph1_imgSkyChart");
 }

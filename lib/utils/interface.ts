@@ -1,7 +1,7 @@
 /**
  * Describes right ascension.
  */
-export interface HARightAscension {
+export interface RightAscension {
 
     /**
      * Hour part of the right ascension.
@@ -22,7 +22,7 @@ export interface HARightAscension {
 /**
  * Describes declination.
  */
-export interface HADeclination {
+export interface Declination {
 
     /**
      * Degree part of the declination.
@@ -42,7 +42,7 @@ export interface HADeclination {
 /**
  * Basic event including name and time.
  */
-export interface HAEvent {
+export interface Event {
 
     /**
      * Name of the event.
@@ -58,7 +58,7 @@ export interface HAEvent {
 /**
  * Event with distance info.
  */
-export interface HADistanceEvent extends HAEvent {
+export interface DistanceEvent extends Event {
 
     /**
      * Distance of the event (km).
@@ -69,7 +69,7 @@ export interface HADistanceEvent extends HAEvent {
 /**
  * Basic position with altitude and azimuth.
  */
-export interface HAPosition {
+export interface Position {
 
     /**
      * Altitude of the position (degree).
@@ -85,17 +85,17 @@ export interface HAPosition {
 /**
  * Position including more data.
  */
-export interface HAExPosition extends HAPosition {
+export interface ExPosition extends Position {
 
     /**
      * Right ascension of the position.
      */
-    rightAscension: HARightAscension;
+    rightAscension: RightAscension;
 
     /**
      * Declination of the position.
      */
-    declination: HADeclination;
+    declination: Declination;
 
     /**
      * Range (distance) of the position (in AU if not specified).
@@ -111,17 +111,17 @@ export interface HAExPosition extends HAPosition {
 /**
  * Event including position.
  */
-export interface HAPositionEvent extends HAEvent, HAPosition {}
+export interface PositionEvent extends Event, Position {}
 
 /**
  * Fuzzy azimuth. One of `"N"`, `"NNE"`, `"NE"`, `"ENE"`, `"E"`, `"ESE"`, `"SE"`, `"SSE"`, `"S"`, `"SSW"`, `"SW"`, `"WSW"`, `"W"`, `"WNW"`, `"NW"`, `"NNW"`
  */
-export type HAFuzzyAzimuth = "N" | "NNE" | "NE" | "ENE" | "E" | "ESE" | "SE" | "SSE" | "S" | "SSW" | "SW" | "WSW" | "W" | "WNW" | "NW" | "NNW";
+export type FuzzyAzimuth = "N" | "NNE" | "NE" | "ENE" | "E" | "ESE" | "SE" | "SSE" | "S" | "SSW" | "SW" | "WSW" | "W" | "WNW" | "NW" | "NNW";
 
 /**
  * Basic fuzzy position including altitude and fuzzy azimuth.
  */
-export interface HAFuzzyPosition {
+export interface FuzzyPosition {
 
     /**
      * Altitude of the position.
@@ -131,10 +131,10 @@ export interface HAFuzzyPosition {
     /**
      * Azimuth of the position.
      */
-    azimuth: HAFuzzyAzimuth;
+    azimuth: FuzzyAzimuth;
 }
 
 /**
  * Event including fuzzy position.
  */
-export interface HAFuzzyEvent extends HAEvent, HAFuzzyPosition {}
+export interface FuzzyEvent extends Event, FuzzyPosition {}

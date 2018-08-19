@@ -10,43 +10,43 @@ import {
     $fuzzyAzimuth,
     $number,
     $text,
+    FuzzyEvent,
     getDocument,
-    HAFuzzyEvent,
-    HATimeConfig,
     postDocument,
+    TimeConfig,
     toRequestConfig
 } from "../utils";
 
 /**
  * `"morning"` or `"evening"`.
  */
-export type HAPassingPeriod = "morning" | "evening";
+export type PassingPeriod = "morning" | "evening";
 
 /**
  * One of `3`, `3.5`, `4`, `4.5`, `5`.
  */
-export type HAMinBrightness = 3 | 3.5 | 4 | 4.5 | 5;
+export type MinBrightness = 3 | 3.5 | 4 | 4.5 | 5;
 
 /**
  * Config to get satellite passing events.
  */
-export interface HAPassingConfig extends HATimeConfig {
+export interface PassingConfig extends TimeConfig {
 
     /**
      * Passing period.
      */
-    period: HAPassingPeriod;
+    period: PassingPeriod;
 
     /**
      * Minimum brightness.
      */
-    minBrightness: HAMinBrightness;
+    minBrightness: MinBrightness;
 }
 
 /**
  * Describes a satellite passing event.
  */
-export interface HAPassing {
+export interface Passing {
 
     /**
      * Satellite name.
@@ -61,17 +61,17 @@ export interface HAPassing {
     /**
      * Passing start event.
      */
-    start: HAFuzzyEvent;
+    start: FuzzyEvent;
 
     /**
      * Highest point event.
      */
-    highest: HAFuzzyEvent;
+    highest: FuzzyEvent;
 
     /**
      * Passing end event.
      */
-    end: HAFuzzyEvent;
+    end: FuzzyEvent;
 
     /**
      * URL of the passing detail.
@@ -91,10 +91,10 @@ function parseTime(base: moment.Moment, text: string): Date {
     return time.toDate();
 }
 
-export async function getDailyPrediction(HA: HeavensAbove, config: Partial<HAPassingConfig>): Promise<HAPassing[]> {
+export async function getDailyPrediction(ha: HeavensAbove, config: Partial<PassingConfig>): Promise<Passing[]> {
     const time = moment(config.time).utc();
     const monthString = time.format("MMMM YYYY");
-    const doc1 = await getDocument(toRequestConfig(HA, config), "/AllSats.aspx");
+    const doc1 = await getDocument(toRequestConfig(ha, config), "/AllSats.aspx");
     let targetID: number | undefined;
     for (const el of $$(doc1, "#ctl00_cph1_TimeSelectionControl1_comboMonth > option")) {
         if ($text(el) === monthString) {
@@ -116,7 +116,7 @@ export async function getDailyPrediction(HA: HeavensAbove, config: Partial<HAPas
         ctl00$cph1$TimeSelectionControl1$radioAMPM: _data.period === "morning" ? "AM" : "PM",
         ctl00$cph1$radioButtonsMag: _data.minBrightness.toFixed(1)
     };
-    const doc2 = await postDocument(toRequestConfig(HA, config), "/AllSats.aspx", data);
+    const doc2 = await postDocument(toRequestConfig(ha, config), "/AllSats.aspx", data);
     return $$(doc2, ROW_SELECTOR).map((el) => ({
         satellite: $text(el, ":nth-child(1)"),
         brightness: $number($text(el, ":nth-child(2)")),

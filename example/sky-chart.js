@@ -1,14 +1,14 @@
 const { HeavensAbove } = require("..");
 const fs = require("fs");
 
-const HA = new HeavensAbove({
+const ha = new HeavensAbove({
     latitude: 40,
     longtitude: 116,
     elevation: 50
 });
 
 (async () => {
-    const skyChartURL = await HA.getSkyChartURL();
-    const skyChart = await HA.getImageStream(skyChartURL);
+    const skyChartURL = await ha.getSkyChartURL();
+    const skyChart = await ha.getImageStream(skyChartURL);
     skyChart.pipe(fs.createWriteStream("sky-chart.png"));
 })();
