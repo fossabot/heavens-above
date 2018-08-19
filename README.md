@@ -212,6 +212,26 @@ Event including position.
 
 - Every properties in [`<HAPosition>`](#position)
 
+#### <a id="fuzzy-azimuth"></a> Type: FuzzyAzimuth
+
+Fuzzy azimuth. One of `"N"`, `"NNE"`, `"NE"`, `"ENE"`, `"E"`, `"ESE"`, `"SE"`, `"SSE"`, `"S"`, `"SSW"`, `"SW"`, `"WSW"`, `"W"`, `"WNW"`, `"NW"`, `"NNW"`
+
+#### <a id="fuzzy-position"></a> Interface: HAFuzzyPosition
+
+Basic position including altitude and azimuth.
+
+- `altitude`: [`<number>`][number] Altitude of the position (degree).
+
+- `azimuth`: [`<FuzzyAzimuth>`](#fuzzy-azimuth) Azimuth of the position (degree).
+
+#### <a id="fuzzy-event"></a> Interface: HAFuzzyEvent
+
+Event including fuzzy position.
+
+- Every properties in [`<HAEvent>`](#event)
+
+- Every properties in [`<HAFuzzyPosition>`](#fuzzy-position)
+
 ### Sky Chart API
 
 #### .getSkyChartURL([config])
@@ -310,7 +330,53 @@ Moon information.
 
 - `appearenceImageURL`: [`<string>`][string] URL of the moon appearence image. (celestial north is upwards)
 
-===
+### Daily Passing Prediction API
+
+#### .getDailyPrediction([config])
+
+Get daily passing prediction by config.
+
+- `config`: [`<HAPassingConfig>`<sub>(partial)</sub>](#passing-config) Config to get daily passing prediction. **Default:** `{}`
+
+- Returns: [`<Promise>`][promise]
+
+    - Resolves: [`<HAPassing[]>`](#passing) Daily passing prediction list.
+
+#### <a id="passing-period"></a> Type: HAPassingPeriod
+
+`"morning"` or `"evening"`.
+
+#### <a id="min-brightness"></a> Type: HAMinBrightness
+
+One of `3`, `3.5`, `4`, `4.5`, `5`.
+
+#### <a id="passing-config"></a> Interface: HAPassingConfig
+
+Config to get satellite passing events.
+
+- Every properties in [`<HATimeConfig>`](#time-config)
+
+- `period`: [`<HAPassingPeriod>`](#passing-period) Passing period.
+
+- `minBrightness`: [`<HAMinBrightness>`](#min-brightness) Minimum brightness.
+
+#### <a id="passing"> Interface: HAPassing
+
+Describes a satellite passing event.
+
+- `satellite`: [`<string>`][string] Satellite name.
+
+- `brightness`: [`<number>`][number] Brightness (mag).
+
+- `start`: [`<HAFuzzyEvent>`](#fuzzy-event) Passing start event.
+
+- `hightest`: [`<HAFuzzyEvent>`](#fuzzy-event) Hightest point event.
+
+- `end`: [`<HAFuzzyEvent>`](#fuzzy-event) Passing end event.
+
+- `detailURL`: [`<string>`][string] URL of the passing detail.
+
+---
 
 [boolean]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type
 [date]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date

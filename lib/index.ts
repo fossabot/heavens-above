@@ -3,11 +3,16 @@ import "source-map-support/register";
 import { Readable } from "stream";
 
 import {
+    getDailyPrediction,
     getMoonInfo,
     getSkyChartURL,
     getSunInfo,
+    HAMinBrightness,
     HAMoonAppearance,
     HAMoonInfo,
+    HAPassing,
+    HAPassingConfig,
+    HAPassingPeriod,
     HASkyChartConfig,
     HASunInfo
 } from "./module";
@@ -33,9 +38,13 @@ export {
     HADistanceEvent,
     HAEvent,
     HAExPosition,
+    HAMinBrightness,
     HAMoonAppearance,
     HAMoonInfo,
     HAPosition,
+    HAPassing,
+    HAPassingConfig,
+    HAPassingPeriod,
     HAPositionEvent,
     HARightAscension,
     HASkyChartConfig,
@@ -134,6 +143,15 @@ export class HeavensAbove implements HAConfig {
      */
     public async getMoonInfo(config: Partial<HATimeConfig> = {}): Promise<HAMoonInfo> {
         return getMoonInfo(this, config);
+    }
+
+    /**
+     * Get daily passing prediction by config.
+     * @param config Config to get daily passing prediction. **Default:** `{}`
+     * @returns Daily passing prediction list.
+     */
+    public async getDailyPrediction(config: Partial<HAPassingConfig> = {}): Promise<HAPassing[]> {
+        return getDailyPrediction(this, config);
     }
 
 }

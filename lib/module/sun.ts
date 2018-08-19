@@ -51,11 +51,9 @@ export interface HASunInfo {
     sunImageURL: string;
 }
 
-// tslint:disable max-line-length
 const CONSTELLATION_SELECTOR = "#aspnetForm > table > tbody > tr:nth-child(3) > td:nth-child(1) > table:nth-child(8) > tbody > tr > td:nth-child(1) > div > table:nth-child(9) > tbody > tr:nth-child(6) > td:nth-child(2)";
 const DAILY_EVENT_SELECTOR = "#aspnetForm > table > tbody > tr:nth-child(3) > td:nth-child(1) > table:nth-child(8) > tbody > tr > td:nth-child(1) > div > table:nth-child(5) > tbody > tr";
 const YEARLY_EVENT_SELECTOR = "#aspnetForm > table > tbody > tr:nth-child(3) > td:nth-child(1) > table:nth-child(8) > tbody > tr > td:nth-child(1) > div > table:nth-child(7) > tbody > tr";
-// tslint:enable max-line-length
 
 function parseTime(base: moment.Moment, text: string): Date {
     const time = moment(text + " Z", "HH:mm Z").utc();

@@ -89,11 +89,9 @@ export interface HAMoonInfo {
 
 }
 
-// tslint:disable max-line-length
 const EVENT_SELECTOR = "#aspnetForm > table > tbody > tr:nth-child(3) > td:nth-child(1) > table:nth-child(6) > tbody > tr > td:nth-child(1) > table:nth-child(5) > tbody > tr";
 const MONTHLY_PHASE_SELECTOR = "#aspnetForm > table > tbody > tr:nth-child(3) > td:nth-child(1) > table:nth-child(6) > tbody > tr > td:nth-child(1) > table:nth-child(7) > tbody > tr";
 const PERIGEE_APOGEE_SELECTOR = "#aspnetForm > table > tbody > tr:nth-child(3) > td:nth-child(1) > table:nth-child(6) > tbody > tr > td:nth-child(1) > table:nth-child(9) > tbody > tr";
-// tslint:enable max-line-length
 
 function parseTime(base: moment.Moment, text: string): Date {
     const time = moment(text + " Z", "HH:mm Z").utc();
