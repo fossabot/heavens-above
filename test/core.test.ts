@@ -1,9 +1,6 @@
 import "mocha";
 import "source-map-support/register";
 
-import * as assert from "assert";
-import { Readable } from "stream";
-
 import HeavensAbove from "../lib";
 
 // tslint:disable no-function-expression
@@ -27,15 +24,14 @@ describe("Core", function (): void {
         });
     });
 
-    it("Should be able to r/w config by getter/setter", function (): void {
+    it("Should be able to read/write config by getter/setter", function (): void {
         HA.latitude = HA.latitude;
         HA.longtitude = HA.longtitude;
         HA.elevation = HA.elevation;
     });
 
     it("Should be able to get image stream", async function (): Promise<void> {
-        const stream = await HA.getImageStream("/");
-        assert(stream instanceof Readable);
+        await HA.getImageStream("/");
     });
 
 });

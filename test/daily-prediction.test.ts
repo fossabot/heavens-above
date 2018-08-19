@@ -7,9 +7,13 @@ import HeavensAbove from "../lib";
 
 // tslint:disable no-function-expression mocha-no-side-effect-code
 
-const HA = new HeavensAbove();
+let HA: HeavensAbove;
 
 describe("Daily prediction", function (): void {
+
+    before(function (): void {
+        HA = new HeavensAbove();
+    });
 
     it("Should be able to get daily prediction without config", async function (): Promise<void> {
         await HA.getDailyPrediction();
