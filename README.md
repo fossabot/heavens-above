@@ -300,8 +300,6 @@ Get moon information by config.
 
     - Resolves: [`<HAMoonInfo>`](#moon-info) Moon information.
 
-#### <a id="moon-info"></a> Interface: HAMoonInfo
-
 #### <a id="moon-appearence"></a> Interface: HAMoonAppearence
 
 Describes moon appearance.
@@ -313,6 +311,8 @@ Describes moon appearance.
 - `longitudeLibration`: [`<number>`][number] Libration in longitude of the moon (degree).
 
 - `latitudeLibration`: [`<number>`][number] Libration in latitude of the moon (degree).
+
+#### <a id="moon-info"></a> Interface: HAMoonInfo
 
 Moon information.
 
