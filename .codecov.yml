@@ -1,9 +1,11 @@
 coverage:
   round: nearest
   range: "60...100"
-  project:
-    default:
-      target: 60%
-      if_no_uploads: error
-      if_not_found: success
-      if_ci_failed: error
+  status:
+    patch: no
+    project:
+      default:
+        target: 60%
+        if_no_uploads: error
+        if_not_found: success
+        if_ci_failed: error
