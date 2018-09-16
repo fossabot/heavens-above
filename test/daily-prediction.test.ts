@@ -1,7 +1,7 @@
 import "mocha";
 import "source-map-support/register";
 
-import * as assert from "assert";
+import assert from "assert";
 
 import HeavensAbove from "../lib";
 

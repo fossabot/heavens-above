@@ -2,7 +2,7 @@
 
 import "source-map-support/register";
 
-import * as assert from "assert";
+import assert from "assert";
 
 export function $(root: NodeSelector, selector: string): Element {
     const element = root.querySelector(selector);

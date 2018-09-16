@@ -1,6 +1,6 @@
 import "source-map-support/register";
 
-import * as moment from "moment";
+import moment from "moment";
 
 import HeavensAbove from "..";
 
