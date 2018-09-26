@@ -39,8 +39,7 @@
     "build": "npm run lint && npm run compile",
     "rebuild": "npm run clean && npm run build",
     "test": "npx mocha -t 20000 -r intelli-espower-loader dist/test/*.test.js",
-    "cov": "npx nyc npm test",
-    "commitmsg": "npx commitlint -E GIT_PARAMS"
+    "cov": "npx nyc npm test"
   },
   "dependencies": {
     "axios": "^0.18.0",
