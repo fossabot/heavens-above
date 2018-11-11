@@ -21,7 +21,7 @@ describe("Daily prediction", function (): void {
 
     it("Should be able to get daily prediction with config", async function (): Promise<void> {
         await ha.getDailyPrediction({
-            time: new Date("2018-07-01"),
+            time: new Date(Date.now() - 86400 * 1e3),
             period: "morning",
             minBrightness: 5
         });
