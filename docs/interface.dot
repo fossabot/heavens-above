@@ -1,0 +1,82 @@
+digraph {
+	rankdir=LR
+	node[shape=record]
+
+	RightAscension[label="{
+		RightAscension |
+			{ .hour (number)
+			| .minute (number)
+			| .second (number)
+		}}"
+	]
+
+	Declination[label="{
+		Declination |
+			{ .degree (number)
+			| .minute (number)
+			| .second (number)
+		}}"
+	]
+
+	Config[label="{
+		Config |
+			{ .latitude (number)
+			| .longitude (number)
+			| .elevation (number)
+		}}"
+	]
+
+	Config->TimeConfig
+	TimeConfig[label="{
+		TimeConfig |
+			{ .time (Date)
+		}}"
+	]
+
+	Event[label="{
+		Event |
+			{ .name (string)
+			| .time (Date)
+		}}"
+	]
+
+	Event->DistanceEvent
+	DistanceEvent[label="{
+		DistanceEvent |
+			{ .distance (number)
+		}}"
+	]
+
+	Position[label="{
+		Position |
+			{ .altitude (number)
+			| .azimuth (number)
+		}}"
+	]
+
+	Position->ExPosition
+	ExPosition[label="{
+		ExPosition |
+			{ .rightAscension (RightAscension)
+			| .declination (Declination)
+			| .range (number)
+			| .constellation (string)
+		}}"
+	]
+
+	Event->PositionEvent
+	Position->PositionEvent
+	PositionEvent[label="{PositionEvent}"]
+
+	FuzzyPosition[label="{
+		FuzzyPosition |
+			{ .altitude (number)
+			| .azimuth (FuzzyAzimuth)
+		}}"
+	]
+
+	Event->FuzzyEvent
+	FuzzyPosition->FuzzyEvent
+	FuzzyEvent[label="{FuzzyEvent}"]
+
+}

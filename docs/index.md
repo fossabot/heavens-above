@@ -34,4 +34,12 @@ const ha = new HeavensAbove({
 
 ## API
 
-View at <https://littlepiggy03.github.io/heavens-above/>
+- [Core API](./core)
+
+- [Interfaces](./interface)
+
+- [Daily Passing Prediction API](./daily-prediction)
+
+- [Sun API](./sun)
+
+- [Moon API](./moon)
