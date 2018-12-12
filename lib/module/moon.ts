@@ -48,7 +48,7 @@ export interface MoonAppearance {
 }
 
 /**
- * Moon info.
+ * Describes moon.
  */
 export interface MoonInfo {
 

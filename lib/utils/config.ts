@@ -44,7 +44,7 @@ export function purifyObject<T>(obj: Partial<T>): Partial<T> {
     for (const key of Object.keys(obj)) {
         // tslint:disable-next-line no-any
         if ((<any>obj)[key] === undefined) {
-            // tslint:disable-next-line no-any
+            // tslint:disable-next-line no-any no-dynamic-delete
             delete (<any>obj)[key];
         }
     }
