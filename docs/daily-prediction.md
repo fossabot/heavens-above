@@ -30,7 +30,7 @@ Config to get satellite passing events.
 
 - `minBrightness`: [`<MinBrightness>`](#min-brightness) Minimum brightness.
 
-#### <a id="passing"> Interface: Passing
+#### <a id="passing"></ag> Interface: Passing
 
 Describes a satellite passing event.
 

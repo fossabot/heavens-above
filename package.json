@@ -1,6 +1,6 @@
 {
   "name": "heavens-above",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "An unofficial package to get data on www.heavens-above.com with TypeScript",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index.d.ts",
@@ -38,7 +38,7 @@
     "compile": "npx tsc --pretty",
     "build": "npm run lint && npm run compile",
     "rebuild": "npm run clean && npm run build",
-    "test": "npx mocha -t 20000 -r intelli-espower-loader dist/test/*.test.js",
+    "test": "npx mocha -t 60000 -r intelli-espower-loader dist/test/*.test.js",
     "cov": "npx nyc npm test"
   },
   "dependencies": {
@@ -58,7 +58,7 @@
     "husky": "^1.0.0",
     "intelli-espower-loader": "^1.0.1",
     "mocha": "^5.2.0",
-    "nyc": "^12.0.2",
+    "nyc": "^13.1.0",
     "power-assert": "^1.6.0",
     "tslint": "^5.10.0",
     "tslint-microsoft-contrib": "^6.0.0",
