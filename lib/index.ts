@@ -55,7 +55,7 @@ export {
  */
 export class HeavensAbove implements Config {
 
-    public readonly config: Config;
+    public config: Config;
 
     /**
      * Create a HeavensAbove instance with an optional default config.

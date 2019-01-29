@@ -12,22 +12,23 @@ describe("Core", function (): void {
     it("Should be able to create class", function (): void {
         ha = new HeavensAbove();
         ha = new HeavensAbove({
-            latitude: 116,
-            longtitude: 40
+            lat: 116,
+            lng: 40
         });
     });
 
     it("Should be able to set config", function (): void {
-        ha.setConfig({
-            latitude: 116,
-            longtitude: 40
-        });
+        ha.config = {
+            lat: 116,
+            lng: 40,
+            alt: 50
+        };
     });
 
     it("Should be able to read/write config by getter/setter", function (): void {
-        ha.latitude = ha.latitude;
-        ha.longtitude = ha.longtitude;
-        ha.elevation = ha.elevation;
+        ha.lat = ha.lat;
+        ha.lng = ha.lng;
+        ha.alt = ha.alt;
     });
 
     it("Should be able to get image stream", async function (): Promise<void> {
