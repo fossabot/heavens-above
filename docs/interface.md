@@ -30,17 +30,17 @@ Describes declination.
 
 Base config including observation location params.
 
-- `latitude`: [`<number>`][number] Latitude of the observation location (degree). **Default:** `0`
+- `lat`: [`<number>`][number] Latitude of the observation location (degree). **Default:** `0`
 
-- `longtitude`: [`<number>`][number] Longitude of the observation location (degree). **Default:** `0`
+- `lng`: [`<number>`][number] Longitude of the observation location (degree). **Default:** `0`
 
-- `elevation`: [`<number>`][number] Elevation of the observation location (meter). **Default:** `0`
+- `alt`: [`<number>`][number] Elevation of the observation location (meter). **Default:** `0`
 
 ```typescript
 {
-    latitude: 40,
-    longtitude: 116,
-    elevation: 50
+    lat: 40,
+    lng: 116,
+    alt: 50
 }
 ```
 

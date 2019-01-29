@@ -20,9 +20,9 @@ digraph {
 
 	Config[label="{
 		Config |
-			{ .latitude (number)
-			| .longitude (number)
-			| .elevation (number)
+			{ .lat (number)
+			| .lng (number)
+			| .alt (number)
 		}}"
 	]
 

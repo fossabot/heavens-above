@@ -16,48 +16,48 @@ Create a HeavensAbove instance with an optional default config.
 new HeavensAbove();
 
 new HeavensAbove({
-    latitude: 40,
-    longtitude: 116,
-    elevation: 50
+    lat: 40,
+    lng: 116,
+    alt: 50
 });
 ```
 
-#### .setConfig(config)
+#### .config
 
 Set default config.
 
-- `config`: [`<Config>`<sub>(partial)</sub>](./interface#config) New default config.
+- [`<Config>`](./interface#config) Default config.
 
 ```typescript
-ha.setConfig({
+ha.config = {
     latitude: 40,
     longtitude: 116,
     elevation: 50
-});
+};
 ```
 
-#### .latitude
+#### .lat
 
 - [`<number>`][number] Latitude of the default observation location (degree). **Default:** `0`
 
 ```typescript
-ha.latitude = 40;
+ha.lat = 40;
 ```
 
-#### .longtitude
+#### .lng
 
 - [`<number>`][number] Longtitude of the default observation location (degree). **Default:** `0`
 
 ```typescript
-ha.longtitude = 116;
+ha.lng = 116;
 ```
 
-#### .elevation
+#### .alt
 
 - [`<number>`][number] Elevation of the default observation location (meter). **Default:** `0`
 
 ```typescript
-ha.elevation = 50;
+ha.alt = 50;
 ```
 
 #### .getImageStream(url)
