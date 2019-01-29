@@ -2,12 +2,6 @@ import "source-map-support/register";
 
 import HeavensAbove from "..";
 
-export interface RawConfig {
-    lat: number;
-    lng: number;
-    alt: number;
-}
-
 /**
  * Base config including observation location params.
  */
@@ -16,17 +10,17 @@ export interface Config {
     /**
      * Latitude of the observation location (degree). **Default:** `0`
      */
-    latitude: number;
+    lat: number;
 
     /**
      * Longitude of the observation location (degree). **Default:** `0`
      */
-    longtitude: number;
+    lng: number;
 
     /**
      * Elevation of the observation location (meter). **Default:** `0`
      */
-    elevation: number;
+    alt: number;
 }
 
 /**
@@ -51,24 +45,6 @@ export function purifyObject<T>(obj: Partial<T>): Partial<T> {
     return obj;
 }
 
-export function toRawConfig(config: Partial<Config>): Partial<RawConfig> {
-    return purifyObject({
-        lat: config.latitude,
-        lng: config.longtitude,
-        alt: config.elevation
-    });
-}
-
-export function toRequestConfig<T extends Config>(ha: HeavensAbove, config: Partial<T>): RawConfig {
-    // tslint:disable-next-line:no-any
-    const _config: Partial<T> = {...<any>config};
-    const result = {
-        ...ha._config,
-        ...toRawConfig(_config)
-    };
-    delete _config.latitude;
-    delete _config.longtitude;
-    delete _config.elevation;
-    Object.assign(result, purifyObject(_config));
-    return result;
+export function toRequestConfig<T extends Config>(ha: HeavensAbove, config: Partial<T>): Config {
+    return {...ha.config, ...config};
 }

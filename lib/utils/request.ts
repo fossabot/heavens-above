@@ -10,7 +10,7 @@ import HeavensAbove from "..";
 
 import {
     $attr,
-    RawConfig
+    Config
 } from ".";
 
 const viewstate = new Map<string, string>();
@@ -21,7 +21,7 @@ function parseDocument(text: string, url: string): Document {
     return document;
 }
 
-export async function getDocument(config: RawConfig, url: string): Promise<Document> {
+export async function getDocument(config: Config, url: string): Promise<Document> {
     const response = await axios.get<string>(url, {
         baseURL: "https://www.heavens-above.com/",
         responseType: "text",
@@ -36,7 +36,7 @@ export async function getDocument(config: RawConfig, url: string): Promise<Docum
     return parseDocument(response.data, url);
 }
 
-export async function postDocument(config: RawConfig, url: string, data: object): Promise<Document> {
+export async function postDocument(config: Config, url: string, data: object): Promise<Document> {
     if (viewstate.has(url) === false) {
         await getDocument(config, url);
     }

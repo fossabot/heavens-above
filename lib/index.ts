@@ -26,10 +26,8 @@ import {
     getImageStream,
     Position,
     PositionEvent,
-    RawConfig,
     RightAscension,
-    TimeConfig,
-    toRawConfig
+    TimeConfig
 } from "./utils";
 
 export {
@@ -57,56 +55,49 @@ export {
  */
 export class HeavensAbove implements Config {
 
-    public readonly _config: RawConfig = {
-        lat: 0,
-        lng: 0,
-        alt: 0
-    };
+    public readonly config: Config;
 
     /**
      * Create a HeavensAbove instance with an optional default config.
      * @param config Default config for each API. **Default:** `{}`
      */
     public constructor(config: Partial<Config> = {}) {
-        this.setConfig(config);
-    }
-
-    /**
-     * Set default config.
-     * @param config New default config.
-     */
-    public setConfig(config: Partial<Config>): void {
-        Object.assign(this._config, toRawConfig(config));
+        this.config = {
+            lat: 0,
+            lng: 0,
+            alt: 0,
+            ...config
+        };
     }
 
     /**
      * Latitude of the default observation location (degree). **Default:** `0`
      */
-    public get latitude(): number {
-        return this._config.lat;
+    public get lat(): number {
+        return this.config.lat;
     }
-    public set latitude(value: number) {
-        this._config.lat = value;
+    public set lat(value: number) {
+        this.config.lat = value;
     }
 
     /**
      * Longtitude of the default observation location (degree). **Default:** `0`
      */
-    public get longtitude(): number {
-        return this._config.lng;
+    public get lng(): number {
+        return this.config.lng;
     }
-    public set longtitude(value: number) {
-        this._config.lng = value;
+    public set lng(value: number) {
+        this.config.lng = value;
     }
 
     /**
      * Elevation of the default observation location (meter). **Default:** `0`
      */
-    public get elevation(): number {
-        return this._config.alt;
+    public get alt(): number {
+        return this.config.alt;
     }
-    public set elevation(value: number) {
-        this._config.alt = value;
+    public set alt(value: number) {
+        this.config.alt = value;
     }
 
     /**
