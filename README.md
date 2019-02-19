@@ -1,6 +1,7 @@
 # heavens-above
 
 [![Build Status](https://travis-ci.org/littlepiggy03/heavens-above.svg?branch=master)](https://travis-ci.org/littlepiggy03/heavens-above) [![Codecov](https://codecov.io/gh/littlepiggy03/heavens-above/branch/master/graph/badge.svg)](https://codecov.io/gh/littlepiggy03/heavens-above) [![Greenkeeper badge](https://badges.greenkeeper.io/littlepiggy03/heavens-above.svg)](https://greenkeeper.io/) [![npm](https://img.shields.io/npm/v/heavens-above.svg)](https://www.npmjs.com/package/heavens-above) [![license](https://img.shields.io/github/license/littlepiggy03/heavens-above.svg)](https://github.com/littlepiggy03/heavens-above/blob/master/LICENSE)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Flittlepiggy03%2Fheavens-above.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Flittlepiggy03%2Fheavens-above?ref=badge_shield)
 
 An unofficial package to get data on [www.heavens-above.com](https://www.heavens-above.com) with TypeScript.
 
@@ -35,3 +36,7 @@ const ha = new HeavensAbove({
 ## API
 
 View at <https://littlepiggy03.github.io/heavens-above/>
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Flittlepiggy03%2Fheavens-above.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Flittlepiggy03%2Fheavens-above?ref=badge_large)
